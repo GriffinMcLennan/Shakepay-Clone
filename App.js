@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import TradeModal from './components/TradeModal'
 import MyTabs from './navigation/MyTabs'
+import BuyScreen from './screens/BuyScreen'
 
 const Stack = createStackNavigator();
 
@@ -27,7 +28,10 @@ export default function App() {
                 }
 
                 <NavigationContainer>
-                    <MyTabs toggleOverlay={toggleOverlay} />
+                    <Stack.Navigator>
+                        <Stack.Screen name="App" children={() => <MyTabs toggleOverlay={toggleOverlay} />} options={{ headerShown: false }} />
+                        <Stack.Screen name="Buy" component={BuyScreen} />
+                    </Stack.Navigator>
                 </NavigationContainer>
 
             </KeyboardAvoidingView>

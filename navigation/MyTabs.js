@@ -8,7 +8,7 @@ import SettingsScreen from './../screens/SettingsScreen'
 import { faCog, faWallet, faCreditCard, faDollarSign, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import TradeButton from './../components/TradeButton'
-
+import HomeStackScreen from './../StackScreens/HomeStackScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +50,7 @@ const MyTabs = ({ toggleOverlay }) => {
                 headerShown: false,
             })}
         >
-            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="Card" component={CardScreen} />
             <Tab.Screen name="Trade" component={HomeScreen} />
             <Tab.Screen name="Send" component={SendScreen} />
