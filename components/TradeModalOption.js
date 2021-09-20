@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native'
 
 const ICON_SIZE = 24;
 
-const TradeModalOption = ({ title, description, Icon, last, toggleOverlay }) => {
+const TradeModalOption = ({ title, description, Icon, last, toggleOverlay, link }) => {
     const navigation = useNavigation();
 
     return (
         <Pressable onPress={() => {
-            navigation.navigate("Buy");
+            navigation.navigate(link);
             toggleOverlay();
         }}>
             <View style={[styles.bottom, last && { borderBottomWidth: 0 }]} >

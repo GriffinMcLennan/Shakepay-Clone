@@ -5,7 +5,7 @@ const CurrencyHistory = ({ navigation }) => {
     return (
         <View>
             <Text>Currency History</Text>
-            <Button title="Purchase" onPress={() => navigation.navigate("Buy")} />
+            <Button title="Purchase" onPress={() => navigation.navigate("Buy & sell")} />
         </View>
     )
 }

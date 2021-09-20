@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TradeModal from './components/TradeModal'
 import MyTabs from './navigation/MyTabs'
 import BuyScreen from './screens/BuyScreen'
+import RecurringBuysScreen from './screens/RecurringBuysScreen'
+import LimitOrdersScreen from './screens/LimitOrdersScreen'
 
 const Stack = createStackNavigator();
 
@@ -30,7 +32,9 @@ export default function App() {
 
                     <Stack.Navigator>
                         <Stack.Screen name="App" children={() => <MyTabs toggleOverlay={toggleOverlay} />} options={{ headerShown: false }} />
-                        <Stack.Screen name="Buy" component={BuyScreen} />
+                        <Stack.Screen name="Buy & sell" component={BuyScreen} />
+                        <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
+                        <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
                     </Stack.Navigator>
                 </NavigationContainer>
 
