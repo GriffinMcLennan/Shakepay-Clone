@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from './../screens/HomeScreen'
 import CardScreen from './../screens/CardScreen'
 import SendScreen from './../screens/SendScreen'
-import SettingsScreen from './../screens/SettingsScreen'
+// import SettingsScreen from './../screens/SettingsScreen'
 import { faCog, faWallet, faCreditCard, faDollarSign, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import TradeButton from './../components/TradeButton'
 import HomeStackScreen from './../StackScreens/HomeStackScreen'
+import SettingsStackScreen from './../StackScreens/SettingsStackScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ const MyTabs = ({ toggleOverlay }) => {
                     let iconColor = focused ? "dodgerblue" : "darkgray";
 
                     switch (route.name) {
-                        case "Home":
+                        case "HomeStack":
                             icon = faWallet;
                             break;
                         case "Card":
@@ -33,7 +33,7 @@ const MyTabs = ({ toggleOverlay }) => {
                         case "Send":
                             icon = faDollarSign;
                             break;
-                        case "Settings":
+                        case "SettingsStack":
                             icon = faCog;
                             break;
                         default:
@@ -50,11 +50,11 @@ const MyTabs = ({ toggleOverlay }) => {
                 headerShown: false,
             })}
         >
-            <Tab.Screen name="Home" component={HomeStackScreen} />
+            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
             <Tab.Screen name="Card" component={CardScreen} />
-            <Tab.Screen name="Trade" component={HomeScreen} />
+            <Tab.Screen name="Trade" component={HomeStackScreen} />
             <Tab.Screen name="Send" component={SendScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="SettingsStack" component={SettingsStackScreen} />
         </Tab.Navigator>
     )
 }

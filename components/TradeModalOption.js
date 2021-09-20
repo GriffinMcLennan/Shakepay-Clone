@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 const ICON_SIZE = 24;
 
 const TradeModalOption = ({ title, description, Icon, last }) => {
+
     return (
         <Pressable onPress={() => alert("Travel to new screen")}>
             <View style={[styles.bottom, last && { borderBottomWidth: 0 }]} >

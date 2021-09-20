@@ -9,7 +9,7 @@ const HomeStack = createStackNavigator();
 const HomeStackScreen = () => {
     return (
         <HomeStack.Navigator>
-            <HomeStack.Screen name="Home" component={HomeScreen} />
+            <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
             <HomeStack.Screen name="Currency History" component={CurrencyHistory} />
         </HomeStack.Navigator>
     )
