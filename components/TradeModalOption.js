@@ -1,13 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { useNavigation } from '@react-navigation/native'
 
 const ICON_SIZE = 24;
 
-const TradeModalOption = ({ title, description, Icon, last }) => {
+const TradeModalOption = ({ title, description, Icon, last, toggleOverlay }) => {
+    const navigation = useNavigation();
 
     return (
-        <Pressable onPress={() => alert("Travel to new screen")}>
+        <Pressable onPress={() => {
+            navigation.navigate("Buy");
+            toggleOverlay();
+        }}>
             <View style={[styles.bottom, last && { borderBottomWidth: 0 }]} >
                 <View style={styles.container}>
                     <FontAwesomeIcon icon={Icon} size={ICON_SIZE} color={"dodgerblue"} />

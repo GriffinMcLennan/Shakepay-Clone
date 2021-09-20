@@ -22,12 +22,12 @@ export default function App() {
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{ flex: 1, width: "100%" }}
             >
-
-                {
-                    overlayVisible && <TradeModal toggleOverlay={toggleOverlay} />
-                }
-
                 <NavigationContainer>
+
+                    {
+                        overlayVisible && <TradeModal toggleOverlay={toggleOverlay} />
+                    }
+
                     <Stack.Navigator>
                         <Stack.Screen name="App" children={() => <MyTabs toggleOverlay={toggleOverlay} />} options={{ headerShown: false }} />
                         <Stack.Screen name="Buy" component={BuyScreen} />

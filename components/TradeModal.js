@@ -11,9 +11,9 @@ const TradeModal = ({ toggleOverlay }) => {
     return (
         <TouchableWithoutFeedback onPress={toggleOverlay} >
             <View style={styles.dominant}>
-                <TouchableWithoutFeedback onPress={() => alert("You clicked")}>
+                <TouchableWithoutFeedback >
                     <View style={[styles.modal, styles.infoModal]}>
-                        <TradeModalOption title="Buy & sell" description="Buy and sell at current prices" Icon={faExchangeAlt} />
+                        <TradeModalOption title="Buy & sell" description="Buy and sell at current prices" Icon={faExchangeAlt} toggleOverlay={toggleOverlay} />
                         <TradeModalOption title="Recurring buys" description="Automatically buy every day, every week, or every month" Icon={faHistory} />
                         <TradeModalOption title="Limit orders" description="Place a buy or sell order at a price you set" Icon={faTags} last={true} />
 
