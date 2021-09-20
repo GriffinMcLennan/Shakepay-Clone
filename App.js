@@ -2,8 +2,11 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, KeyboardAvoidingView, SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
 import TradeModal from './components/TradeModal'
 import MyTabs from './navigation/MyTabs'
+
+const Stack = createStackNavigator();
 
 export default function App() {
     const [overlayVisible, setOverlayVisible] = useState(false);
