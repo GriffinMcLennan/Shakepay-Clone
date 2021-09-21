@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, SafeAreaView } from 'reac
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import TradeModal from './components/TradeModal'
+import FundingModal from './components/FundingModal';
 import MyTabs from './navigation/MyTabs'
 import BuyScreen from './screens/BuyScreen'
 import RecurringBuysScreen from './screens/RecurringBuysScreen'
@@ -12,10 +13,16 @@ import LimitOrdersScreen from './screens/LimitOrdersScreen'
 const Stack = createStackNavigator();
 
 export default function App() {
-    const [overlayVisible, setOverlayVisible] = useState(false);
+    const [tradeOverlayVisible, setTradeOverlayVisible] = useState(false);
+    const [fundingOverlayVisible, setFundingOverlayVisible] = useState(false);
 
-    const toggleOverlay = () => {
-        setOverlayVisible(!overlayVisible);
+
+    const toggleTradeOverlay = () => {
+        setTradeOverlayVisible(!tradeOverlayVisible);
+    }
+
+    const toggleFundingOverlay = () => {
+        setFundingOverlayVisible(!fundingOverlayVisible);
     }
 
     return (
@@ -27,11 +34,21 @@ export default function App() {
                 <NavigationContainer>
 
                     {
-                        overlayVisible && <TradeModal toggleOverlay={toggleOverlay} />
+                        tradeOverlayVisible && <TradeModal toggleOverlay={toggleTradeOverlay} />
+                    }
+
+                    {
+                        fundingOverlayVisible && <FundingModal toggleOverlay={toggleFundingOverlay} />
                     }
 
                     <Stack.Navigator>
-                        <Stack.Screen name="App" children={() => <MyTabs toggleOverlay={toggleOverlay} />} options={{ headerShown: false }} />
+                        <Stack.Screen
+                            name="App"
+                            children={() => <MyTabs
+                                toggleTradeOverlay={toggleTradeOverlay} toggleFundingOverlay={toggleFundingOverlay}
+                            />}
+                            options={{ headerShown: false }}
+                        />
                         <Stack.Screen name="Buy & sell" component={BuyScreen} />
                         <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
                         <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />

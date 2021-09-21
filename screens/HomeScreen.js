@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import Currency from './../components/Currency'
 
-const HomeScreen = () => {
+const HomeScreen = ({ toggleFundingOverlay }) => {
     return (
         <View style={styles.homescreen}>
             <ShakepayLogo width={40} height={40} marginTop={10} />
             <Text style={styles.portfolioValue}>$55.59</Text>
 
             <View style={styles.buttons}>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={() => toggleFundingOverlay()} >
                     <FontAwesomeIcon icon={faArrowDown} marginRight={10} color={"#42b5fd"} />
                     <Text style={styles.text} >Add funds</Text>
                 </Pressable>

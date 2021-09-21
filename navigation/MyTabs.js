@@ -12,7 +12,7 @@ import SettingsStackScreen from './../StackScreens/SettingsStackScreen'
 
 const Tab = createBottomTabNavigator();
 
-const MyTabs = ({ toggleOverlay }) => {
+const MyTabs = ({ toggleTradeOverlay, toggleFundingOverlay }) => {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -41,7 +41,7 @@ const MyTabs = ({ toggleOverlay }) => {
                     }
 
                     return route.name === "Trade" ? (
-                        <TradeButton toggleOverlay={toggleOverlay} />
+                        <TradeButton toggleOverlay={toggleTradeOverlay} />
                     )
                         : (
                             <FontAwesomeIcon icon={icon} size={20} color={iconColor} />
@@ -51,7 +51,8 @@ const MyTabs = ({ toggleOverlay }) => {
                 tabBarShowLabel: false,
             })}
         >
-            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+            {/* <Tab.Screen name="HomeStack" component={HomeStackScreen} /> */}
+            <Tab.Screen name="HomeStack" children={() => <HomeStackScreen toggleFundingOverlay={toggleFundingOverlay} />} />
             <Tab.Screen name="Card"
                 component={CardScreen}
                 options={{

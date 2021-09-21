@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useNavigation } from '@react-navigation/native'
 
 const ICON_SIZE = 24;
 
-const TradeModalOption = ({ title, description, Icon, last, toggleOverlay, link }) => {
+const TradeModalOption = ({ title, description, Icon, last, toggleOverlay, link, SVG, ImageSrc }) => {
     const navigation = useNavigation();
 
     return (
@@ -15,10 +15,12 @@ const TradeModalOption = ({ title, description, Icon, last, toggleOverlay, link 
         }}>
             <View style={[styles.bottom, last && { borderBottomWidth: 0 }]} >
                 <View style={styles.container}>
-                    <FontAwesomeIcon icon={Icon} size={ICON_SIZE} color={"dodgerblue"} />
+                    {Icon && <FontAwesomeIcon icon={Icon} size={ICON_SIZE} color={"dodgerblue"} />}
+                    {SVG && <SVG height={35} width={35} />}
+                    {ImageSrc && <Image style={{ height: 35, width: 35 }} source={ImageSrc} />}
                     <View style={styles.info}>
                         <Text style={styles.titleFont}>{title}</Text>
-                        <Text style={styles.descriptionFont}>{description}</Text>
+                        {description && <Text style={styles.descriptionFont}>{description}</Text>}
                     </View>
                 </View>
             </View>
