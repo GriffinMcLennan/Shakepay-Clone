@@ -29,8 +29,8 @@ const HomeScreen = () => {
             {/* <BitcoinLogo /> */}
             <ScrollView style={styles.holdings}>
                 <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
-                <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={63012} />
-                <Currency name={"Ethereum"} amount={3.2} Logo={EthereumLogo} price={4200} />
+                <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={"63,012"} />
+                <Currency name={"Ethereum"} amount={3.2} Logo={EthereumLogo} price={"4,200"} />
             </ScrollView>
         </View>
     )
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 45,
         flexDirection: "row",
+        borderRadius: 4,
     },
     holdings: {
         width: "100%",

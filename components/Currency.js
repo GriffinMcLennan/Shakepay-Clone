@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
+const getPrice = (str) => {
+    let num = 0;
+
+    try {
+        let n = str.length;
+
+        for (let i = 0; i < n; i++) {
+            if (str.charAt(i) == ',') continue;
+            num = num * 10 + Number(str.charAt(i));
+        }
+    }
+    catch (e) {
+        return num;
+    }
+
+    return num;
+}
+
 const Currency = ({ name, amount, Logo, price }) => {
     const navigation = useNavigation();
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+        setValue(getPrice(price) * amount);
+    }, [price]);
 
     return (
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History")} >
@@ -17,7 +40,13 @@ const Currency = ({ name, amount, Logo, price }) => {
                         }
                     </View>
                 </View>
-                <Text>{amount}</Text>
+
+                <View style={{ alignItems: "flex-end" }}>
+                    <Text style={styles.title}>{amount}</Text>
+                    {
+                        price && (<Text style={styles.priceInfo}>${value}</Text>)
+                    }
+                </View>
             </View>
         </TouchableWithoutFeedback >
     )
@@ -37,11 +66,12 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
+        fontWeight: "400",
     },
     priceInfo: {
-        fontSize: 12,
+        fontSize: 16,
         color: "#657795",
-        marginLeft: 10,
+        marginTop: 5,
     }
 })
