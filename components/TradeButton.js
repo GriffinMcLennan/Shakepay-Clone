@@ -17,7 +17,7 @@ export default TradeButton
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "lightskyblue",
+        backgroundColor: "#009FFF",
         borderRadius: 50,
         position: "relative",
         bottom: 10,

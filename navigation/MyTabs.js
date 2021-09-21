@@ -18,7 +18,7 @@ const MyTabs = ({ toggleOverlay }) => {
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let icon = null;
-                    let iconColor = focused ? "dodgerblue" : "darkgray";
+                    let iconColor = focused ? "#009FFF" : "#94aed5";
 
                     switch (route.name) {
                         case "HomeStack":
@@ -48,10 +48,11 @@ const MyTabs = ({ toggleOverlay }) => {
                         )
                 },
                 headerShown: false,
+                tabBarShowLabel: false,
             })}
         >
             <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="Card" component={CardScreen} />
+            <Tab.Screen name="Card" component={CardScreen} options={{ headerShown: true }} />
             <Tab.Screen name="Trade" component={HomeStackScreen} />
             <Tab.Screen name="Send" component={SendScreen} />
             <Tab.Screen name="SettingsStack" component={SettingsStackScreen} />

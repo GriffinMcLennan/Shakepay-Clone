@@ -16,13 +16,13 @@ const HomeScreen = () => {
 
             <View style={styles.buttons}>
                 <Pressable style={styles.button}>
-                    <FontAwesomeIcon icon={faArrowDown} marginRight={10} />
-                    <Text>Add funds</Text>
+                    <FontAwesomeIcon icon={faArrowDown} marginRight={10} color={"#42b5fd"} />
+                    <Text style={styles.text} >Add funds</Text>
                 </Pressable>
 
                 <Pressable style={styles.button}>
-                    <FontAwesomeIcon icon={faArrowUp} marginRight={10} />
-                    <Text>Send</Text>
+                    <FontAwesomeIcon icon={faArrowUp} marginRight={10} color={"#42b5fd"} />
+                    <Text style={styles.text}>Send</Text>
                 </Pressable>
             </View>
 
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     button: {
-        width: "40%",
-        backgroundColor: "lightblue",
+        width: "45%",
+        backgroundColor: "#f0f5ff",
         alignItems: "center",
         justifyContent: "center",
         height: 50,
@@ -75,5 +75,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 10,
         marginRight: 10,
+    },
+    text: {
+        color: "#42b5fd",
+        fontWeight: "700",
+        fontSize: 16,
     }
 })
