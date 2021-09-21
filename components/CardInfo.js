@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         marginTop: 60,
         marginLeft: 20,
         marginRight: 20,
+        alignItems: 'center'
     },
     numberStyle: {
         fontSize: 40,

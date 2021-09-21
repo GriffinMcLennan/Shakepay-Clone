@@ -26,6 +26,7 @@ const HomeScreen = () => {
                 </Pressable>
             </View>
 
+            {/* <BitcoinLogo /> */}
             <ScrollView style={styles.holdings}>
                 <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
                 <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={63012} />
@@ -60,13 +61,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#f0f5ff",
         alignItems: "center",
         justifyContent: "center",
-        height: 50,
+        height: 45,
         flexDirection: "row",
     },
     holdings: {
         width: "100%",
         borderTopWidth: 1,
-        borderColor: "gainsboro",
+        borderColor: "#f0f5ff",
     },
     holding: {
         flexDirection: "row",

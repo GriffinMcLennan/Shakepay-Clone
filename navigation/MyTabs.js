@@ -52,7 +52,14 @@ const MyTabs = ({ toggleOverlay }) => {
             })}
         >
             <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="Card" component={CardScreen} options={{ headerShown: true }} />
+            <Tab.Screen name="Card"
+                component={CardScreen}
+                options={{
+                    headerShown: true,
+                    headerStyle: { shadowColor: "transparent" },
+                    headerTitleStyle: { fontWeight: "400", fontSize: 22, }
+                }}
+            />
             <Tab.Screen name="Trade" component={HomeStackScreen} />
             <Tab.Screen name="Send" component={SendScreen} />
             <Tab.Screen name="SettingsStack" component={SettingsStackScreen} />

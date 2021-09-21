@@ -9,7 +9,7 @@ const Currency = ({ name, amount, Logo, price }) => {
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History")} >
             <View style={styles.holding}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Logo width={30} height={30} marginRight={10} />
+                    <Logo width={36} height={36} marginRight={10} />
                     <View>
                         <Text style={styles.title}>{name}</Text>
                         {
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         marginTop: 20,
+        marginBottom: 30,
         marginLeft: 10,
         marginRight: 10,
     },
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     },
     priceInfo: {
         fontSize: 12,
-        color: "darkgray",
+        color: "#657795",
         marginLeft: 10,
     }
 })

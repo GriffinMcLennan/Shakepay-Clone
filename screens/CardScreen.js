@@ -12,7 +12,7 @@ const CardScreen = () => {
             <Text style={styles.greeting}>Hi $USER</Text>
 
             <View style={styles.info}>
-                <CardInfo number="142,610" description="Wallet position" />
+                <CardInfo number="142,610" description="Waitlist position" />
                 <CardInfo number="420" description="Points earned" color="#009FFF" />
             </View>
         </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         fontWeight: "700",
     },
     subtitle: {
-        color: "#6A6A6A",
+        color: "#657795",
         fontSize: 16,
         marginTop: 10,
     },
