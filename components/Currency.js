@@ -29,7 +29,9 @@ const Currency = ({ name, amount, Logo, price }) => {
     }, [price]);
 
     return (
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History")} >
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History", {
+            name: name,
+        })} >
             <View style={styles.holding}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Logo width={36} height={36} marginRight={10} />
