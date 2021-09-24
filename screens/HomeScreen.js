@@ -44,7 +44,7 @@ const HomeScreen = ({ toggleFundingOverlay }) => {
             <ScrollView style={styles.holdings}>
                 <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
                 <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={bitcoinPrice} />
-                <Currency name={"Ethereum"} amount={3.2} Logo={EthereumLogo} price={ethereumPrice} />
+                <Currency name={"Ethereum"} amount={32} Logo={EthereumLogo} price={ethereumPrice} />
             </ScrollView>
         </View>
     )

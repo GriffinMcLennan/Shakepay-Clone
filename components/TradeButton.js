@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
