@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import ShakepayLogo from './../assets/ShakepayLogo.svg'
 import BitcoinLogo from './../assets/btc.svg'
@@ -7,8 +7,22 @@ import CadLogo from './../assets/mapleLeaf.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import Currency from './../components/Currency'
+import { basicPrices } from './../services/priceService'
 
 const HomeScreen = ({ toggleFundingOverlay }) => {
+    const [bitcoinPrice, setBitcoinPrice] = useState("0");
+    const [ethereumPrice, setEthereumPrice] = useState("0");
+
+    useEffect(() => {
+        const fetchPrices = async () => {
+            const { btcPrice, ethPrice } = await basicPrices();
+            setBitcoinPrice(btcPrice);
+            setEthereumPrice(ethPrice);
+        };
+
+        fetchPrices();
+    }, []);
+
     return (
         <View style={styles.homescreen}>
             <ShakepayLogo width={40} height={40} marginTop={10} />
@@ -29,8 +43,8 @@ const HomeScreen = ({ toggleFundingOverlay }) => {
             {/* <BitcoinLogo /> */}
             <ScrollView style={styles.holdings}>
                 <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
-                <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={"63,012"} />
-                <Currency name={"Ethereum"} amount={3.2} Logo={EthereumLogo} price={"4,200"} />
+                <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={bitcoinPrice} />
+                <Currency name={"Ethereum"} amount={3.2} Logo={EthereumLogo} price={ethereumPrice} />
             </ScrollView>
         </View>
     )

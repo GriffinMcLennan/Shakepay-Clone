@@ -2,35 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const getPrice = (str) => {
-    let num = 0;
-
-    try {
-        let n = str.length;
-
-        for (let i = 0; i < n; i++) {
-            if (str.charAt(i) == ',') continue;
-            num = num * 10 + Number(str.charAt(i));
-        }
-    }
-    catch (e) {
-        return num;
-    }
-
-    return num;
-}
-
 const Currency = ({ name, amount, Logo, price }) => {
     const navigation = useNavigation();
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        setValue(getPrice(price) * amount);
+        setValue(Number(price) * amount);
     }, [price]);
 
     return (
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History", {
             name: name,
+            currentPrice: price,
         })} >
             <View style={styles.holding}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
