@@ -3,25 +3,29 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import TradeModalOption from './TradeModalOption'
 import { Dimensions } from 'react-native'
 import { faExchangeAlt, faHistory, faTags } from '@fortawesome/free-solid-svg-icons'
+import { useModalContext } from './../contexts/ModalProvider'
+
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const TradeModal = ({ toggleOverlay }) => {
+const TradeModal = () => {
+    const { toggleTradeModalVisible } = useModalContext();
+
     return (
-        <TouchableWithoutFeedback onPress={toggleOverlay} >
+        <TouchableWithoutFeedback onPress={toggleTradeModalVisible} >
             <View style={styles.dominant}>
                 <TouchableWithoutFeedback >
                     <View style={[styles.modal, styles.infoModal]}>
-                        <TradeModalOption title="Buy & sell" description="Buy and sell at current prices" Icon={faExchangeAlt} toggleOverlay={toggleOverlay} link="Buy & sell" />
-                        <TradeModalOption title="Recurring buys" description="Automatically buy every day, every week, or every month" Icon={faHistory} toggleOverlay={toggleOverlay} link="Recurring buys" />
-                        <TradeModalOption title="Limit orders" description="Place a buy or sell order at a price you set" Icon={faTags} last={true} toggleOverlay={toggleOverlay} link="Limit orders" />
+                        <TradeModalOption title="Buy & sell" description="Buy and sell at current prices" Icon={faExchangeAlt} link="Buy & sell" />
+                        <TradeModalOption title="Recurring buys" description="Automatically buy every day, every week, or every month" Icon={faHistory} link="Recurring buys" />
+                        <TradeModalOption title="Limit orders" description="Place a buy or sell order at a price you set" Icon={faTags} last={true} link="Limit orders" />
 
                     </View>
                 </TouchableWithoutFeedback>
 
 
-                <TouchableWithoutFeedback onPress={toggleOverlay}>
+                <TouchableWithoutFeedback onPress={toggleTradeModalVisible}>
                     <View style={[styles.modal, styles.closeModal]}>
                         <Text>Cancel</Text>
                     </View>

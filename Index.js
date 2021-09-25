@@ -13,16 +13,14 @@ import { ModalProvider, useModalContext } from './contexts/ModalProvider'
 
 const Stack = createStackNavigator();
 
-export default function App() {
-    // const [tradeOverlayVisible, setTradeOverlayVisible] = useState(false);
-    const [fundingOverlayVisible, setFundingOverlayVisible] = useState(false);
-
+export default function Index() {
     const {
         tradeModalVisible,
         toggleTradeModalVisible,
         fundingModalVisible,
         toggleFundingModalVisible,
     } = useModalContext();
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -31,26 +29,22 @@ export default function App() {
                 style={{ flex: 1, width: "100%" }}
             >
                 <NavigationContainer>
-                    <ModalProvider>
-                        {tradeModalVisible && <TradeModal toggleOverlay={toggleTradeModalVisible} />}
+                    {tradeModalVisible && <TradeModal />}
 
-                        {fundingModalVisible && <FundingModal toggleOverlay={toggleFundingModalVisible} />}
+                    {fundingModalVisible && <FundingModal toggleOverlay={toggleFundingModalVisible} />}
 
-
-
-                        <Stack.Navigator>
-                            <Stack.Screen
-                                name="App"
-                                children={() => <MyTabs
-                                    toggleTradeOverlay={toggleTradeModalVisible} toggleFundingOverlay={toggleFundingModalVisible}
-                                />}
-                                options={{ headerShown: false }}
-                            />
-                            <Stack.Screen name="Buy & sell" component={BuyScreen} />
-                            <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
-                            <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
-                        </Stack.Navigator>
-                    </ModalProvider>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name="App"
+                            children={() => <MyTabs
+                                toggleTradeOverlay={toggleTradeModalVisible} toggleFundingOverlay={toggleFundingModalVisible}
+                            />}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen name="Buy & sell" component={BuyScreen} />
+                        <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
+                        <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
+                    </Stack.Navigator>
                 </NavigationContainer>
 
             </KeyboardAvoidingView>

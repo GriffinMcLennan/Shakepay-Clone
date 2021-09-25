@@ -2,10 +2,13 @@ import React from 'react'
 import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { useModalContext } from './../contexts/ModalProvider'
 
-const TradeButton = ({ toggleOverlay }) => {
+const TradeButton = () => {
+    const { toggleTradeModalVisible } = useModalContext();
+
     return (
-        <TouchableWithoutFeedback onPress={toggleOverlay} >
+        <TouchableWithoutFeedback onPress={() => toggleTradeModalVisible()} >
             <View style={styles.container}>
                 <FontAwesomeIcon icon={faExchangeAlt} size={20} color={"white"} />
             </View>

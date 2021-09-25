@@ -2,16 +2,18 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useNavigation } from '@react-navigation/native'
+import { useModalContext } from './../contexts/ModalProvider'
 
 const ICON_SIZE = 24;
 
-const TradeModalOption = ({ title, description, Icon, last, toggleOverlay, link, SVG, ImageSrc }) => {
+const TradeModalOption = ({ title, description, Icon, last, link, SVG, ImageSrc }) => {
     const navigation = useNavigation();
+    const { toggleTradeModalVisible } = useModalContext();
 
     return (
         <Pressable onPress={() => {
             navigation.navigate(link);
-            toggleOverlay();
+            toggleTradeModalVisible();
         }}>
             <View style={[styles.bottom, last && { borderBottomWidth: 0 }]} >
                 <View style={styles.container}>
