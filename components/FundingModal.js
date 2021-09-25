@@ -7,21 +7,25 @@ import BitcoinLogo from './../assets/btc.svg'
 import EthereumLogo from './../assets/eth.svg'
 import InteracLogo from './../assets/interac_logo.jpg'
 import WireTransferLogo from './../assets/wire.png'
+import { useModalContext } from './../contexts/ModalProvider'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const FundingModal = ({ toggleOverlay }) => {
+    const { toggleFundingModalVisible, toggleInteracModalVisible, interacModalVisible } = useModalContext();
+    console.log(interacModalVisible);
+
     return (
-        <TouchableWithoutFeedback onPress={toggleOverlay} >
+        <TouchableWithoutFeedback onPress={toggleFundingModalVisible} >
             <View style={styles.dominant}>
                 <TouchableWithoutFeedback >
                     <View style={[styles.modal, styles.infoModal]}>
                         <Text style={styles.text}>Choose a funding option</Text>
-                        <TradeModalOption title="Interac e-Transfer" ImageSrc={InteracLogo} toggleOverlay={toggleOverlay} link="" />
-                        <TradeModalOption title="Bitcoin" SVG={BitcoinLogo} toggleOverlay={toggleOverlay} link="" />
-                        <TradeModalOption title="Ethereum" SVG={EthereumLogo} toggleOverlay={toggleOverlay} link="" />
-                        <TradeModalOption title="Wire Transfer" ImageSrc={WireTransferLogo} last={true} toggleOverlay={toggleOverlay} link="" />
+                        <TradeModalOption title="Interac e-Transfer" ImageSrc={InteracLogo} toggleModal={toggleFundingModalVisible} toggleLinkModal={toggleInteracModalVisible} />
+                        <TradeModalOption title="Bitcoin" SVG={BitcoinLogo} toggleModal={toggleFundingModalVisible} />
+                        <TradeModalOption title="Ethereum" SVG={EthereumLogo} toggleModal={toggleFundingModalVisible} />
+                        <TradeModalOption title="Wire Transfer" ImageSrc={WireTransferLogo} last={true} toggleModal={toggleFundingModalVisible} />
                     </View>
                 </TouchableWithoutFeedback>
 

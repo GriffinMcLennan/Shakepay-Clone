@@ -8,10 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import Currency from './../components/Currency'
 import { basicPrices } from './../services/priceService'
+import { useModalContext } from './../contexts/ModalProvider'
 
-const HomeScreen = ({ toggleFundingOverlay }) => {
+const HomeScreen = () => {
     const [bitcoinPrice, setBitcoinPrice] = useState("0");
     const [ethereumPrice, setEthereumPrice] = useState("0");
+    const { toggleFundingModalVisible } = useModalContext();
 
     useEffect(() => {
         const fetchPrices = async () => {
@@ -29,7 +31,7 @@ const HomeScreen = ({ toggleFundingOverlay }) => {
             <Text style={styles.portfolioValue}>$55.59</Text>
 
             <View style={styles.buttons}>
-                <Pressable style={styles.button} onPress={() => toggleFundingOverlay()} >
+                <Pressable style={styles.button} onPress={() => toggleFundingModalVisible()} >
                     <FontAwesomeIcon icon={faArrowDown} marginRight={10} color={"#42b5fd"} />
                     <Text style={styles.text} >Add funds</Text>
                 </Pressable>
@@ -40,7 +42,6 @@ const HomeScreen = ({ toggleFundingOverlay }) => {
                 </Pressable>
             </View>
 
-            {/* <BitcoinLogo /> */}
             <ScrollView style={styles.holdings}>
                 <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
                 <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={bitcoinPrice} />

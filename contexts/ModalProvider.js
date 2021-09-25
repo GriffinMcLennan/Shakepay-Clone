@@ -9,6 +9,7 @@ const useModalContext = () => {
 const ModalProvider = ({ children }) => {
     const [tradeModalVisible, setTradeModalVisible] = useState(false);
     const [fundingModalVisible, setFundingModalVisible] = useState(false);
+    const [interacModalVisible, setInteracModalVisible] = useState(false);
 
     const toggleTradeModalVisible = () => {
         setTradeModalVisible(!tradeModalVisible);
@@ -18,11 +19,17 @@ const ModalProvider = ({ children }) => {
         setFundingModalVisible(!fundingModalVisible);
     }
 
+    const toggleInteracModalVisible = () => {
+        setInteracModalVisible(!interacModalVisible);
+    }
+
     const value = {
         tradeModalVisible,
         toggleTradeModalVisible,
         fundingModalVisible,
         toggleFundingModalVisible,
+        interacModalVisible,
+        toggleInteracModalVisible,
     };
 
     return (

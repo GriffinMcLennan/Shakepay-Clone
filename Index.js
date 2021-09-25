@@ -9,7 +9,8 @@ import MyTabs from './navigation/MyTabs'
 import BuyScreen from './screens/BuyScreen'
 import RecurringBuysScreen from './screens/RecurringBuysScreen'
 import LimitOrdersScreen from './screens/LimitOrdersScreen'
-import { ModalProvider, useModalContext } from './contexts/ModalProvider'
+import { useModalContext } from './contexts/ModalProvider'
+import InteracModal from './components/InteracModal'
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function Index() {
         toggleTradeModalVisible,
         fundingModalVisible,
         toggleFundingModalVisible,
+        interacModalVisible,
     } = useModalContext();
 
 
@@ -31,14 +33,14 @@ export default function Index() {
                 <NavigationContainer>
                     {tradeModalVisible && <TradeModal />}
 
-                    {fundingModalVisible && <FundingModal toggleOverlay={toggleFundingModalVisible} />}
+                    {fundingModalVisible && <FundingModal />}
+
+                    {interacModalVisible && <InteracModal />}
 
                     <Stack.Navigator>
                         <Stack.Screen
                             name="App"
-                            children={() => <MyTabs
-                                toggleTradeOverlay={toggleTradeModalVisible} toggleFundingOverlay={toggleFundingModalVisible}
-                            />}
+                            component={MyTabs}
                             options={{ headerShown: false }}
                         />
                         <Stack.Screen name="Buy & sell" component={BuyScreen} />

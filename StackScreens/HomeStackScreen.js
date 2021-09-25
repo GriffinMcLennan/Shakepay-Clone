@@ -6,10 +6,10 @@ import CurrencyHistory from './../screens/CurrencyHistory'
 
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen = ({ toggleFundingOverlay }) => {
+const HomeStackScreen = () => {
     return (
         <HomeStack.Navigator>
-            <HomeStack.Screen name="HomeScreen" children={() => <HomeScreen toggleFundingOverlay={toggleFundingOverlay} />} options={{ headerShown: false }} />
+            <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
             <HomeStack.Screen name="Currency History" component={CurrencyHistory} />
         </HomeStack.Navigator>
     )

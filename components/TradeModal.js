@@ -17,13 +17,32 @@ const TradeModal = () => {
             <View style={styles.dominant}>
                 <TouchableWithoutFeedback >
                     <View style={[styles.modal, styles.infoModal]}>
-                        <TradeModalOption title="Buy & sell" description="Buy and sell at current prices" Icon={faExchangeAlt} link="Buy & sell" />
-                        <TradeModalOption title="Recurring buys" description="Automatically buy every day, every week, or every month" Icon={faHistory} link="Recurring buys" />
-                        <TradeModalOption title="Limit orders" description="Place a buy or sell order at a price you set" Icon={faTags} last={true} link="Limit orders" />
+                        <TradeModalOption
+                            title="Buy & sell"
+                            description="Buy and sell at current prices"
+                            Icon={faExchangeAlt}
+                            link="Buy & sell"
+                            toggleModal={toggleTradeModalVisible}
+                        />
 
+                        <TradeModalOption
+                            title="Recurring buys"
+                            description="Automatically buy every day, every week, or every month"
+                            Icon={faHistory}
+                            link="Recurring buys"
+                            toggleModal={toggleTradeModalVisible}
+                        />
+
+                        <TradeModalOption
+                            title="Limit orders"
+                            description="Place a buy or sell order at a price you set"
+                            Icon={faTags}
+                            last={true}
+                            link="Limit orders"
+                            toggleModal={toggleTradeModalVisible}
+                        />
                     </View>
                 </TouchableWithoutFeedback>
-
 
                 <TouchableWithoutFeedback onPress={toggleTradeModalVisible}>
                     <View style={[styles.modal, styles.closeModal]}>
