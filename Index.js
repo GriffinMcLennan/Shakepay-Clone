@@ -11,6 +11,7 @@ import RecurringBuysScreen from './screens/RecurringBuysScreen'
 import LimitOrdersScreen from './screens/LimitOrdersScreen'
 import { useModalContext } from './contexts/ModalProvider'
 import InteracModal from './components/InteracModal'
+import ShakingModal from './components/ShakingModal'
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,8 @@ export default function Index() {
                     {fundingModalVisible && <FundingModal />}
 
                     {interacModalVisible && <InteracModal />}
+
+                    {<ShakingModal />}
 
                     <Stack.Navigator>
                         <Stack.Screen

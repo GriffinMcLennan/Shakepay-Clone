@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import TradeModalOption from './TradeModalOption'
 import { Dimensions } from 'react-native'
-import { faExchangeAlt, faHistory, faTags } from '@fortawesome/free-solid-svg-icons'
 import BitcoinLogo from './../assets/btc.svg'
 import EthereumLogo from './../assets/eth.svg'
 import InteracLogo from './../assets/interac_logo.jpg'
@@ -13,8 +12,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const FundingModal = ({ toggleOverlay }) => {
-    const { toggleFundingModalVisible, toggleInteracModalVisible, interacModalVisible } = useModalContext();
-    console.log(interacModalVisible);
+    const { toggleFundingModalVisible, toggleInteracModalVisible } = useModalContext();
 
     return (
         <TouchableWithoutFeedback onPress={toggleFundingModalVisible} >
