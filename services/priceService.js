@@ -6,7 +6,7 @@ export default priceService = async (currency, timePeriod) => {
     currency = currency.toLowerCase();
     const days = periodToDays[timePeriod];
     const priceFrequency = days > 30 ? 'daily' : 'bidaily';
-    const url = `https://api.coingecko.com/api/v3/coins/${currency}/market_chart?vs_currency=usd&days=${days}&interval=${priceFrequency}`;
+    const url = `https://api.coingecko.com/api/v3/coins/${currency}/market_chart?vs_currency=cad&days=${days}&interval=${priceFrequency}`;
     // const url = `https://api.coingecko.com/api/v3/coins/${currency}/market_chart?vs_currency=usd&days=5&interval=daily`;
 
     const response = await axios.get(url);
@@ -20,11 +20,11 @@ export default priceService = async (currency, timePeriod) => {
 }
 
 const basicPrices = async () => {
-    const url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum&vs_currencies=usd";
+    const url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum&vs_currencies=cad";
     const response = await axios.get(url);
     const data = response.data;
-    const btcPrice = data.bitcoin.usd.toFixed(2);
-    const ethPrice = data.ethereum.usd.toFixed(2);
+    const btcPrice = data.bitcoin.cad.toFixed(2);
+    const ethPrice = data.ethereum.cad.toFixed(2);
     return { "btcPrice": btcPrice, "ethPrice": ethPrice };
 }
 

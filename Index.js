@@ -22,6 +22,7 @@ export default function Index() {
         fundingModalVisible,
         toggleFundingModalVisible,
         interacModalVisible,
+        shakingModalVisible,
     } = useModalContext();
 
 
@@ -38,7 +39,7 @@ export default function Index() {
 
                     {interacModalVisible && <InteracModal />}
 
-                    {<ShakingModal />}
+                    {shakingModalVisible && <ShakingModal />}
 
                     <Stack.Navigator>
                         <Stack.Screen

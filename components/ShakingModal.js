@@ -1,17 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View, Modal, Image } from 'react-native'
+import { StyleSheet, Text, View, Modal, Image, Pressable } from 'react-native'
 import ShakepayLogo from './../assets/ShakepayLogo.svg'
 import ShakepayFox from './../assets/fox.png'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-
+import { useModalContext } from './../contexts/ModalProvider'
+import { useNavigation } from '@react-navigation/native'
 
 const ShakingModal = () => {
+    const { toggleShakingModalVisible } = useModalContext();
+    const navigation = useNavigation();
+
     return (
         <Modal
             animation="slide"
-            visible={true}
         >
             <View style={styles.container}>
                 <ShakepayLogo width={60} height={60} />
@@ -30,18 +33,26 @@ const ShakingModal = () => {
                     </View>
                 </View>
 
-                <LinearGradient
-                    colors={['#009fff', '#00c8ff']}
-                    style={styles.refBox}
-                    start={[0.5, 1]}
-                    end={[1, 1]}
+                <Pressable
+                    style={{ width: "100%", alignItems: "center" }}
+                    onPress={() => {
+                        navigation.navigate("Buy & sell");
+                        toggleShakingModalVisible();
+                    }}
                 >
-                    <Text style={styles.refText}>Earn $10 by referring a friend</Text>
-                </LinearGradient>
+                    <LinearGradient
+                        colors={['#009fff', '#00c8ff']}
+                        style={styles.refBox}
+                        start={[0.5, 1]}
+                        end={[1, 1]}
+                    >
+                        <Text style={styles.refText}>Earn $10 by referring a friend</Text>
+                    </LinearGradient>
+                </Pressable>
 
-                <View style={styles.closeBox}>
+                <Pressable style={styles.closeBox} onPress={() => toggleShakingModalVisible()}>
                     <Text style={styles.closeBoxText}>Close</Text>
-                </View>
+                </Pressable>
             </View>
         </Modal>
     )
