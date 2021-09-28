@@ -22,6 +22,7 @@ const BuyScreen = ({ route }) => {
     const [bitcoinPrice, setBitcoinPrice] = useState(null);
     const [ethereumPrice, setEthereumPrice] = useState(null);
     const [convertedValue, setConvertedValue] = useState(0);
+
     const {
         fromCurrency,
         setFromCurrency,
@@ -139,6 +140,36 @@ const BuyScreen = ({ route }) => {
         setUsedDecimal(false);
     }
 
+    const setMax = () => {
+        let maximumAmount;
+
+        if (buySell === "Buy") {
+            //going from dollars to crypto
+            maximumAmount = availableCAD;
+        }
+        else {
+            //Selling
+            if (crypto === "Bitcoin") {
+                maximumAmount = availableBTC;
+            }
+            else {
+                maximumAmount = availableETH;
+            }
+        }
+
+        maximumAmount = maximumAmount.toString();
+
+        if (maximumAmount.length > 0) {
+            let numberArr = [];
+
+            for (let i = 0; i < maximumAmount.length; i++) {
+                numberArr.push(maximumAmount.charAt(i));
+            }
+
+            setNumber(numberArr);
+        }
+    }
+
     return (
         <View style={styles.container}>
             {fromCurrency !== undefined && toCurrency !== undefined &&
@@ -161,7 +192,7 @@ const BuyScreen = ({ route }) => {
                             ethereumPrice={ethereumPrice}
                         />
 
-                        <Pressable style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+                        <Pressable style={{ alignItems: "center", justifyContent: "center", flex: 1 }} onPress={() => setMax()}>
                             <Text style={styles.maxText}>MAX</Text>
                         </Pressable>
                     </View>
@@ -174,7 +205,11 @@ const BuyScreen = ({ route }) => {
                         value={convertedValue}
                         available={currencyToInfo[toCurrency].available}
                     />
-                    <NumPad numberPressed={numberPressed} undoNumberPressed={undoNumberPressed} decimalPressed={decimalPressed} />
+                    <NumPad
+                        numberPressed={numberPressed}
+                        undoNumberPressed={undoNumberPressed}
+                        decimalPressed={decimalPressed}
+                    />
 
                     <Pressable
                         style={{ width: "100%", alignItems: "center" }}
