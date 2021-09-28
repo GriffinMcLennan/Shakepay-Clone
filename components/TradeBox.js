@@ -7,7 +7,7 @@ import { useModalContext } from './../contexts/ModalProvider'
 const GRAY = "#455d87";
 
 const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available }) => {
-    const amount = value !== undefined ? value : amountArr.join("");
+    const amount = value !== undefined ? value : Number(amountArr.join("")).toLocaleString('en-US', { currency: 'USD' });
     const { toggleFromModalVisible, toggleToModalVisible } = useModalContext();
     const modalToggle = toFrom === "From" ? toggleFromModalVisible : toggleToModalVisible;
 

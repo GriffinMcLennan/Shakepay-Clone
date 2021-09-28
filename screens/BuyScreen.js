@@ -32,6 +32,8 @@ const BuyScreen = ({ route }) => {
     const availableCAD = 1000;
     const availableBTC = 2;
     const availableETH = 0;
+    const buySell = fromCurrency === "Dollars" ? "Buy" : "Sell";
+    const crypto = buySell === "Buy" ? toCurrency : fromCurrency;
 
     const currencyToInfo = {
         Dollars: {
@@ -158,10 +160,6 @@ const BuyScreen = ({ route }) => {
                             bitcoinPrice={bitcoinPrice}
                             ethereumPrice={ethereumPrice}
                         />
-                        {/* <View style={styles.conversionRate}>
-                            <Text>Sell price</Text>
-                            {bitcoinPrice && <Text>1 BTC = {bitcoinPrice.toLocaleString('en-US', { currency: 'USD' })} CAD</Text>}
-                        </View> */}
 
                         <Pressable style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
                             <Text style={styles.maxText}>MAX</Text>
@@ -190,7 +188,7 @@ const BuyScreen = ({ route }) => {
                             start={[0.5, 1]}
                             end={[1, 1]}
                         >
-                            <Text style={styles.refText}>Sell Bitcoin</Text>
+                            <Text style={styles.refText}>{buySell} {crypto}</Text>
                         </LinearGradient>
                     </Pressable>
                 </View>
