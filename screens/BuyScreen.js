@@ -5,14 +5,15 @@ import NumPad from './../components/NumPad'
 import EthereumLogo from './../assets/eth.svg'
 import BitcoinLogo from './../assets/btc.svg'
 import CadLogo from './../assets/mapleLeaf.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { basicPrices } from './../services/priceService'
 import { useModalContext } from './../contexts/ModalProvider'
+import SwapButton from './../components/SwapButton'
+import ConversionInfo from '../components/ConversionInfo.js'
 
 const RED = "#f1326b";
 const ORANGE = "#f79218";
+const BLACK = "black";
 
 const BuyScreen = ({ route }) => {
     const { from } = route.params;
@@ -48,7 +49,7 @@ const BuyScreen = ({ route }) => {
         },
         Ethereum: {
             available: availableETH,
-            color: RED,
+            color: BLACK,
             logo: EthereumLogo,
             selectable: ["Dollars"],
             price: ethereumPrice,
@@ -149,23 +150,18 @@ const BuyScreen = ({ route }) => {
                         available={currencyToInfo[fromCurrency].available}
                     />
 
-                    <View style={styles.converter}>
-                        <Pressable
-                            style={styles.swap}
-                            onPress={() => flipCurrencies()}
-                        >
-                            <FontAwesomeIcon
-                                color="#42b5fd"
-                                icon={faExchangeAlt}
-                                size={13}
-                                style={{ transform: [{ rotate: '90deg' }] }}
-                            />
-                        </Pressable>
-
-                        <View style={styles.conversionRate}>
+                    <View style={styles.swapOptionsRow}>
+                        <SwapButton swap={() => flipCurrencies()} />
+                        <ConversionInfo
+                            from={fromCurrency}
+                            to={toCurrency}
+                            bitcoinPrice={bitcoinPrice}
+                            ethereumPrice={ethereumPrice}
+                        />
+                        {/* <View style={styles.conversionRate}>
                             <Text>Sell price</Text>
                             {bitcoinPrice && <Text>1 BTC = {bitcoinPrice.toLocaleString('en-US', { currency: 'USD' })} CAD</Text>}
-                        </View>
+                        </View> */}
 
                         <Pressable style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
                             <Text style={styles.maxText}>MAX</Text>
@@ -210,25 +206,9 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flex: 1,
     },
-    converter: {
+    swapOptionsRow: {
         height: 50,
         flexDirection: "row",
-    },
-    swap: {
-        alignItems: "center",
-        justifyContent: "center",
-        width: 100,
-        height: "100%",
-        borderRightWidth: 1,
-        borderColor: "#f0f5ff",
-    },
-    conversionRate: {
-        alignItems: "center",
-        justifyContent: "center",
-        paddingLeft: 5,
-        paddingRight: 5,
-        borderRightWidth: 1,
-        borderColor: "#f0f5ff",
     },
     maxText: {
         fontSize: 22,
