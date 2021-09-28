@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Button, Dimensions, TouchableWithoutFeedback, Pressable, ScrollView } from 'react-native'
-import { ChartDot, ChartPath, ChartPathProvider, ChartYLabel, ChartXLabel } from '@rainbow-me/animated-charts'
+import { StyleSheet, Text, View, Dimensions, TouchableWithoutFeedback, Pressable, ScrollView } from 'react-native'
+import { ChartPathProvider, } from '@rainbow-me/animated-charts'
 import priceService from './../services/priceService'
 import Chart from './../components/Chart'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -75,7 +75,7 @@ const CurrencyHistory = ({ navigation, route }) => {
         <View style={styles.container} >
             <ScrollView>
                 {name !== "Dollars" &&
-                    <View>
+                    <View style={styles.bottomBorder}>
                         <ChartPathProvider data={{ points: periodToArray[timePeriod][0], smoothingStrategy: "bezier", smoothingFactor: "0.3" }}>
                             <Chart SIZE={SIZE} changeStartPrice={(newPrice) => changeStartPrice(newPrice)} startPrice={startPrice} currentPrice={currentPrice} />
                         </ChartPathProvider>
@@ -148,8 +148,6 @@ const styles = StyleSheet.create({
     balanceRow: {
         flexDirection: "row",
         justifyContent: "space-between",
-        borderTopWidth: 1,
-        borderTopColor: "#f0f5ff",
         marginTop: 10,
     },
     balanceDescription: {
@@ -190,4 +188,8 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         fontSize: 16,
     },
+    bottomBorder: {
+        borderBottomWidth: 1,
+        borderBottomColor: "#f0f5ff",
+    }
 })
