@@ -5,13 +5,13 @@ import { useNavigation } from '@react-navigation/native'
 
 const ICON_SIZE = 24;
 
-const TradeModalOption = ({ title, description, Icon, last, link, SVG, ImageSrc, toggleModal, toggleLinkModal }) => {
+const TradeModalOption = ({ title, description, Icon, last, link, SVG, ImageSrc, toggleModal, toggleLinkModal, navOptions }) => {
     const navigation = useNavigation();
 
     return (
         <Pressable onPress={() => {
             if (link !== undefined) {
-                navigation.navigate(link);
+                navigation.navigate(link, { ...navOptions });
             }
             else {
                 //Toggle Show Modal

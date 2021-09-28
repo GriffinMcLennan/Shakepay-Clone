@@ -22,6 +22,7 @@ const TradeModal = () => {
                             description="Buy and sell at current prices"
                             Icon={faExchangeAlt}
                             link="Buy & sell"
+                            navOptions={{ from: "Bitcoin" }}
                             toggleModal={toggleTradeModalVisible}
                         />
 

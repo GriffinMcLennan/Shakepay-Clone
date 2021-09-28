@@ -2,25 +2,27 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { useModalContext } from './../contexts/ModalProvider'
 
 const GRAY = "#455d87";
 
-const TradeBox = ({ color, SVG, toFrom, amountArr }) => {
-    const amount = Number(amountArr.join("")).toLocaleString('en-US', { currency: 'USD' });
+const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available }) => {
+    const amount = value !== undefined ? value : amountArr.join("");
+    const { toggleFromModalVisible, toggleToModalVisible } = useModalContext();
+    const modalToggle = toFrom === "From" ? toggleFromModalVisible : toggleToModalVisible;
 
     return (
         <View style={[styles.container, { borderColor: color }]}>
-            {/* <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", height: "100%" }}> */}
-            <Pressable style={styles.currencyInfo}>
+            <Pressable style={styles.currencyInfo} onPress={() => modalToggle()}>
                 <SVG width={35} height={35} />
 
                 <View style={styles.currencyInfoText}>
                     <Text style={{ color: GRAY, marginBottom: 2, fontSize: 14, }}>{toFrom}</Text>
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
-                        <Text style={{ fontWeight: "400", fontSize: 18, marginRight: 7, }}>$CURRENCY</Text>
+                        <Text style={{ fontWeight: "400", fontSize: 18, marginRight: 7, }}>{currency}</Text>
                         <FontAwesomeIcon icon={faChevronDown} />
                     </View>
-                    <Text style={{ color: GRAY, fontSize: 14, }}>0.0123</Text>
+                    <Text style={{ color: GRAY, fontSize: 14, }}>{available}</Text>
                 </View>
             </Pressable>
 

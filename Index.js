@@ -12,19 +12,20 @@ import LimitOrdersScreen from './screens/LimitOrdersScreen'
 import { useModalContext } from './contexts/ModalProvider'
 import InteracModal from './components/InteracModal'
 import ShakingModal from './components/ShakingModal'
+import FromModal from './components/FromModal'
+import ToModal from './components/ToModal'
 
 const Stack = createStackNavigator();
 
 export default function Index() {
     const {
         tradeModalVisible,
-        toggleTradeModalVisible,
         fundingModalVisible,
-        toggleFundingModalVisible,
         interacModalVisible,
         shakingModalVisible,
+        fromModalVisible,
+        toModalVisible,
     } = useModalContext();
-
 
     return (
         <SafeAreaView style={styles.container}>
@@ -40,6 +41,10 @@ export default function Index() {
                     {interacModalVisible && <InteracModal />}
 
                     {shakingModalVisible && <ShakingModal />}
+
+                    {fromModalVisible && <FromModal />}
+
+                    {toModalVisible && <ToModal />}
 
                     <Stack.Navigator>
                         <Stack.Screen

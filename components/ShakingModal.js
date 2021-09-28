@@ -36,7 +36,7 @@ const ShakingModal = () => {
                 <Pressable
                     style={{ width: "100%", alignItems: "center" }}
                     onPress={() => {
-                        navigation.navigate("Buy & sell");
+                        navigation.navigate("Buy & sell", { from: "Bitcoin" });
                         toggleShakingModalVisible();
                     }}
                 >

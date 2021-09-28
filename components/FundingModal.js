@@ -28,7 +28,7 @@ const FundingModal = ({ toggleOverlay }) => {
                 </TouchableWithoutFeedback>
 
 
-                <TouchableWithoutFeedback onPress={toggleOverlay}>
+                <TouchableWithoutFeedback onPress={toggleFundingModalVisible}>
                     <View style={[styles.modal, styles.closeModal]}>
                         <Text>Cancel</Text>
                     </View>

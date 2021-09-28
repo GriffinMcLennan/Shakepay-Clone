@@ -65,30 +65,35 @@ const CurrencyHistory = ({ navigation, route }) => {
             setArrRef(data);
         };
 
-        setData();
+        if (name !== "Dollars") {
+            setData();
+        }
     }, [timePeriod]);
 
 
     return (
         <View style={styles.container} >
             <ScrollView>
-                <ChartPathProvider data={{ points: periodToArray[timePeriod][0], smoothingStrategy: "bezier", smoothingFactor: "0.3" }}>
-                    <Chart SIZE={SIZE} changeStartPrice={(newPrice) => changeStartPrice(newPrice)} startPrice={startPrice} currentPrice={currentPrice} />
-                </ChartPathProvider>
+                {name !== "Dollars" &&
+                    <View>
+                        <ChartPathProvider data={{ points: periodToArray[timePeriod][0], smoothingStrategy: "bezier", smoothingFactor: "0.3" }}>
+                            <Chart SIZE={SIZE} changeStartPrice={(newPrice) => changeStartPrice(newPrice)} startPrice={startPrice} currentPrice={currentPrice} />
+                        </ChartPathProvider>
 
-                <View style={styles.selector}>
-                    {
-                        periods.map(period => (
-                            <TouchableWithoutFeedback key={period} onPress={() => setTimePeriod(period)}>
-                                <View style={styles.switches}>
-                                    <Text style={timePeriod === period && styles.selected}>1{period}</Text>
-                                </View>
-                            </TouchableWithoutFeedback>
-                        ))
-                    }
+                        <View style={styles.selector}>
+                            {
+                                periods.map(period => (
+                                    <TouchableWithoutFeedback key={period} onPress={() => setTimePeriod(period)}>
+                                        <View style={styles.switches}>
+                                            <Text style={timePeriod === period && styles.selected}>1{period}</Text>
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                ))
+                            }
 
-                </View>
-
+                        </View>
+                    </View>
+                }
                 <View style={styles.balanceRow}>
                     <View style={styles.balanceDescription}>
                         <Text style={styles.balancePrimary}>Balance</Text>
