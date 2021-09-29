@@ -29,7 +29,7 @@ export default function Index() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView
+            <View
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={{ flex: 1, width: "100%" }}
             >
@@ -58,7 +58,7 @@ export default function Index() {
                     </Stack.Navigator>
                 </NavigationContainer>
 
-            </KeyboardAvoidingView>
+            </View>
             <StatusBar style="auto" />
         </SafeAreaView >
     );
