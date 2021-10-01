@@ -14,6 +14,10 @@ const HomeScreen = () => {
     const [bitcoinPrice, setBitcoinPrice] = useState("0");
     const [ethereumPrice, setEthereumPrice] = useState("0");
     const { toggleFundingModalVisible } = useModalContext();
+    const CADAmount = 150;
+    const bitcoinAmount = 0.059;
+    const ethereumAmount = 32;
+    const total = CADAmount + bitcoinAmount * bitcoinPrice + ethereumAmount * ethereumPrice;
 
     useEffect(() => {
         const fetchPrices = async () => {
@@ -28,7 +32,7 @@ const HomeScreen = () => {
     return (
         <View style={styles.homescreen}>
             <ShakepayLogo width={40} height={40} marginTop={10} />
-            <Text style={styles.portfolioValue}>$55.59</Text>
+            <Text style={styles.portfolioValue}>${total.toLocaleString('en-US', { currency: 'USD' })}</Text>
 
             <View style={styles.buttons}>
                 <Pressable style={styles.button} onPress={() => toggleFundingModalVisible()} >
@@ -43,9 +47,9 @@ const HomeScreen = () => {
             </View>
 
             <ScrollView style={styles.holdings}>
-                <Currency name={"Dollars"} amount={0} Logo={CadLogo} />
-                <Currency name={"Bitcoin"} amount={0.0059} Logo={BitcoinLogo} price={bitcoinPrice} />
-                <Currency name={"Ethereum"} amount={32} Logo={EthereumLogo} price={ethereumPrice} />
+                <Currency name={"Dollars"} amount={CADAmount} Logo={CadLogo} />
+                <Currency name={"Bitcoin"} amount={bitcoinAmount} Logo={BitcoinLogo} price={bitcoinPrice} />
+                <Currency name={"Ethereum"} amount={ethereumAmount} Logo={EthereumLogo} price={ethereumPrice} />
             </ScrollView>
         </View>
     )
@@ -62,7 +66,8 @@ const styles = StyleSheet.create({
     },
     portfolioValue: {
         marginTop: 25,
-        fontSize: 36
+        fontSize: 36,
+        fontWeight: "400",
     },
     buttons: {
         flexDirection: "row",

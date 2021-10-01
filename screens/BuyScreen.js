@@ -83,6 +83,10 @@ const BuyScreen = ({ route }) => {
         }
     }, [number]);
 
+    useEffect(() => {
+        setNumber(['0']);
+    }, [fromCurrency, toCurrency]);
+
     const disableButton = number.length === 1 && number[0] === '0';
 
     const numberPressed = (newDigit) => {

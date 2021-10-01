@@ -21,7 +21,7 @@ const Currency = ({ name, amount, Logo, price }) => {
                     <View>
                         <Text style={styles.title}>{name}</Text>
                         {
-                            price && (<Text style={styles.priceInfo}>${price}</Text>)
+                            price && (<Text style={styles.priceInfo}>${Number(price).toLocaleString('en-US', { currency: 'USD' })}</Text>)
                         }
                     </View>
                 </View>
@@ -29,7 +29,7 @@ const Currency = ({ name, amount, Logo, price }) => {
                 <View style={{ alignItems: "flex-end" }}>
                     <Text style={styles.title}>{amount}</Text>
                     {
-                        price && (<Text style={styles.priceInfo}>${value}</Text>)
+                        price && (<Text style={styles.priceInfo}>${value.toLocaleString('en-US', { currency: 'USD' })}</Text>)
                     }
                 </View>
             </View>

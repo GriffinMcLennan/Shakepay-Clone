@@ -13,7 +13,7 @@ const CardScreen = () => {
 
             <View style={styles.info}>
                 <CardInfo number="142,610" description="Waitlist position" />
-                <CardInfo number="420" description="Points earned" color="#009FFF" />
+                <CardInfo number="800" description="Points earned" color="#009FFF" />
             </View>
         </View>
     )
