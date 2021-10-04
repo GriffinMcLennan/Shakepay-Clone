@@ -13,6 +13,7 @@ const ModalProvider = ({ children }) => {
     const [shakingModalVisible, setShakingModalVisible] = useState(false);
     const [fromModalVisible, setFromModalVisible] = useState(false);
     const [toModalVisible, setToModalVisible] = useState(false);
+    const [bitcoinModalVisible, setBitcoinModalVisible] = useState(false);
     const [fromCurrency, setFromCurrency] = useState();
     const [toCurrency, setToCurrency] = useState("Dollars");
 
@@ -40,6 +41,10 @@ const ModalProvider = ({ children }) => {
         setToModalVisible(!toModalVisible);
     }
 
+    const toggleBitcoinModalVisible = () => {
+        setBitcoinModalVisible(!bitcoinModalVisible);
+    }
+
     const value = {
         tradeModalVisible,
         toggleTradeModalVisible,
@@ -57,6 +62,8 @@ const ModalProvider = ({ children }) => {
         toModalVisible,
         toggleFromModalVisible,
         toggleToModalVisible,
+        bitcoinModalVisible,
+        toggleBitcoinModalVisible,
     };
 
     return (

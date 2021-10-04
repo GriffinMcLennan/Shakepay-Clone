@@ -11,7 +11,7 @@ const InteracModal = () => {
     return (
         <View style={styles.modalView}>
             <Modal
-                animation="slide"
+                animationType="slide"
             >
                 <View style={styles.container}>
                     <Pressable

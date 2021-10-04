@@ -14,6 +14,7 @@ import InteracModal from './components/InteracModal'
 import ShakingModal from './components/ShakingModal'
 import FromModal from './components/FromModal'
 import ToModal from './components/ToModal'
+import BitcoinModal from './components/BitcoinModal'
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function Index() {
         shakingModalVisible,
         fromModalVisible,
         toModalVisible,
+        bitcoinModalVisible,
     } = useModalContext();
 
     return (
@@ -45,6 +47,9 @@ export default function Index() {
                     {fromModalVisible && <FromModal />}
 
                     {toModalVisible && <ToModal />}
+
+                    {bitcoinModalVisible && <BitcoinModal />}
+                    {/* <BitcoinModal /> */}
 
                     <Stack.Navigator>
                         <Stack.Screen

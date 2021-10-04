@@ -12,7 +12,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const FundingModal = ({ toggleOverlay }) => {
-    const { toggleFundingModalVisible, toggleInteracModalVisible } = useModalContext();
+    const { toggleFundingModalVisible, toggleInteracModalVisible, toggleBitcoinModalVisible } = useModalContext();
 
     return (
         <TouchableWithoutFeedback onPress={toggleFundingModalVisible} >
@@ -21,7 +21,7 @@ const FundingModal = ({ toggleOverlay }) => {
                     <View style={[styles.modal, styles.infoModal]}>
                         <Text style={styles.text}>Choose a funding option</Text>
                         <TradeModalOption title="Interac e-Transfer" ImageSrc={InteracLogo} toggleModal={toggleFundingModalVisible} toggleLinkModal={toggleInteracModalVisible} />
-                        <TradeModalOption title="Bitcoin" SVG={BitcoinLogo} toggleModal={toggleFundingModalVisible} />
+                        <TradeModalOption title="Bitcoin" SVG={BitcoinLogo} toggleModal={toggleFundingModalVisible} toggleLinkModal={toggleBitcoinModalVisible} />
                         <TradeModalOption title="Ethereum" SVG={EthereumLogo} toggleModal={toggleFundingModalVisible} />
                         <TradeModalOption title="Wire Transfer" ImageSrc={WireTransferLogo} last={true} toggleModal={toggleFundingModalVisible} />
                     </View>
