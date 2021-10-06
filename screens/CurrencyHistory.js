@@ -4,8 +4,10 @@ import { ChartPathProvider, } from '@rainbow-me/animated-charts'
 import priceService from './../services/priceService'
 import Chart from './../components/Chart'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowDown, faArrowUp, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faChevronLeft, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import Transactions from '../components/Transactions'
+import { useModalContext } from './../contexts/ModalProvider'
+import HeaderLeft from './../components/HeaderLeft'
 
 const link = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=bidaily";
 const { width: SIZE } = Dimensions.get("window");
@@ -21,14 +23,35 @@ const periods = [HOUR, DAY, WEEK, MONTH, YEAR];
 const CurrencyHistory = ({ navigation, route }) => {
     const [timePeriod, setTimePeriod] = useState(DAY);
     const { name, currentPrice } = route.params;
+    const { setFromCurrency, setToCurrency } = useModalContext();
 
+    const setCurrencies = () => {
+        if (name === 'Dollars') {
+            setFromCurrency("Dollars");
+            setToCurrency("Bitcoin")
+        }
+        else {
+            setFromCurrency(name);
+            setToCurrency("Dollars");
+        }
+
+        navigation.navigate("Buy & sell", { from: name });
+    }
     useEffect(() => {
         navigation.setOptions({
-            title: name, headerLeft: () => (
-                <Pressable onPress={() => navigation.pop()}>
-                    <FontAwesomeIcon icon={faChevronLeft} size={20} margin={10} />
-                </Pressable>
+            title: name,
+            headerStyle: { shadowColor: "transparent" },
+            headerLeft: () => (
+                // <Pressable onPress={() => navigation.pop()}>
+                //     <FontAwesomeIcon icon={faChevronLeft} size={20} />
+                // </Pressable>
+                <HeaderLeft />
             ),
+            headerRight: () => (
+                <Pressable style={styles.toTrade} onPress={() => setCurrencies()} >
+                    <FontAwesomeIcon icon={faExchangeAlt} size={20} color={"#009FFF"} />
+                </Pressable>
+            )
         });
     }, []);
 
@@ -191,5 +214,11 @@ const styles = StyleSheet.create({
     bottomBorder: {
         borderBottomWidth: 1,
         borderBottomColor: "#f0f5ff",
+    },
+    toTrade: {
+        height: 50,
+        width: 50,
+        justifyContent: "center",
+        alignItems: "center",
     }
 })

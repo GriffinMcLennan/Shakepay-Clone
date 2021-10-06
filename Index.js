@@ -15,6 +15,7 @@ import ShakingModal from './components/ShakingModal'
 import FromModal from './components/FromModal'
 import ToModal from './components/ToModal'
 import BitcoinModal from './components/BitcoinModal'
+import HeaderLeft from './components/HeaderLeft'
 
 const Stack = createStackNavigator();
 
@@ -57,7 +58,11 @@ export default function Index() {
                             component={MyTabs}
                             options={{ headerShown: false }}
                         />
-                        <Stack.Screen name="Buy & sell" component={BuyScreen} />
+                        <Stack.Screen name="Buy & sell" component={BuyScreen} options={{
+                            headerLeft: () => (
+                                <HeaderLeft />
+                            )
+                        }} />
                         <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
                         <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
                     </Stack.Navigator>
