@@ -5,7 +5,8 @@ import { StatusBar } from 'expo-status-bar'
 import { NavigationContainer } from '@react-navigation/native'
 import EntranceScreen from './../screens/EntranceScreen'
 import SignInScreen from './../screens/SignInScreen'
-import Test from './../components/Test'
+import RegisterScreen from './../screens/RegisterScreen'
+
 const EntranceStack = createStackNavigator();
 
 const EntranceStackScreen = () => {
@@ -18,6 +19,7 @@ const EntranceStackScreen = () => {
                 <EntranceStack.Navigator>
                     <EntranceStack.Screen name="Entrance" component={EntranceScreen} options={{ headerShown: false }} />
                     <EntranceStack.Screen name="Sign In" component={SignInScreen} />
+                    <EntranceStack.Screen name="Register" component={RegisterScreen} />
                 </EntranceStack.Navigator>
             </NavigationContainer>
             <StatusBar style="auto" />

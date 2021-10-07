@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
 const GradientButton = ({ onPress, text, disableButton = false, ...rest }) => {
-    console.log(rest);
     return (
         <Pressable
             style={[styles.container, { ...rest }]}

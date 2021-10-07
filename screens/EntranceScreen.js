@@ -19,6 +19,7 @@ const EntranceScreen = ({ navigation }) => {
 
             <GradientButton
                 text="Create an account"
+                onPress={() => navigation.push("Register")}
             />
         </View>
     )

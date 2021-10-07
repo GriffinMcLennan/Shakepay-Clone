@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, TextInput, Pressable, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TextInput } from 'react-native'
+import { CheckBox } from 'react-native-elements'
 import HeaderLeft from './../components/HeaderLeft'
 import GradientButton from './../components/GradientButton'
 
-const SignInScreen = ({ navigation }) => {
-    const [username, setUsername] = useState("");
+const RegisterScreen = ({ navigation }) => {
+    const [shaketag, setShaketag] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [tosState, setTosState] = useState(false);
+
 
     useEffect(() => {
         navigation.setOptions({
@@ -19,7 +23,6 @@ const SignInScreen = ({ navigation }) => {
             )
         });
     }, []);
-
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -34,17 +37,31 @@ const SignInScreen = ({ navigation }) => {
             >
                 <View style={styles.scrollContainer}>
                     <View style={styles.center}>
-                        <Text style={styles.title}>Log in to Shakepay</Text>
+                        <Text style={styles.title}>Welcome to Shakepay!</Text>
+                        <Text style={styles.description}>Let's create your account</Text>
+                        <View style={styles.box}>
+                            <View style={styles.boxRow}>
+                                <TextInput
+                                    style={styles.boxText}
+                                    onChangeText={(text) => setShaketag(text)}
+                                    value={shaketag}
+                                    placeholder="@shaketag (like a username)"
+                                    placeholderTextColor="#6581b3"
+                                    autoFocus
+                                />
+                            </View>
+                        </View>
 
                         <View style={styles.box}>
                             <View style={styles.boxRow}>
                                 <TextInput
                                     style={styles.boxText}
-                                    onChangeText={(text) => setUsername(text)}
-                                    value={username}
+                                    onChangeText={(text) => setEmail(text)}
+                                    value={email}
                                     placeholder="Email"
                                     placeholderTextColor="#6581b3"
-                                    autoFocus
+                                    autofocus
+                                    secureTextEntry
                                 />
                             </View>
                         </View>
@@ -62,21 +79,33 @@ const SignInScreen = ({ navigation }) => {
                                 />
                             </View>
                         </View>
+
+                        <CheckBox
+                            title={
+                                <Text style={styles.tos}>
+                                    I agree with the <Text style={styles.tosHighlight}>Terms of Use </Text>
+                                    and <Text style={styles.tosHighlight}>
+                                        Privacy Policy.
+                                    </Text>
+                                </Text>
+                            }
+                            checked={tosState}
+                            containerStyle={{ backgroundColor: "transparent", borderWidth: 0, }}
+                            onPress={() => setTosState(!tosState)}
+                        />
                     </View>
                 </View>
             </ScrollView>
-
             <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <GradientButton
                     text="Log in"
                 />
             </View>
-
         </KeyboardAvoidingView >
     )
 }
 
-export default SignInScreen
+export default RegisterScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -87,7 +116,7 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: "500",
         fontSize: 22,
-        marginTop: 10,
+        marginTop: 20,
     },
     scrollContainer: {
         flex: 1,
@@ -99,10 +128,9 @@ const styles = StyleSheet.create({
         height: 50,
         borderRadius: 5,
         padding: 5,
-        marginTop: 20,
         justifyContent: "center",
         width: "90%",
-        marginBottom: 10,
+        marginTop: 10,
     },
     boxRow: {
         flexDirection: "row",
@@ -118,5 +146,17 @@ const styles = StyleSheet.create({
     center: {
         marginLeft: "auto",
         marginRight: "auto",
+    },
+    description: {
+        marginTop: 10,
+        color: "#6581b3",
+        marginBottom: 15,
+    },
+    tos: {
+        fontSize: 12,
+    },
+    tosHighlight: {
+        color: "#009FFF",
+        fontWeight: "bold",
     }
 })
