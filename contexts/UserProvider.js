@@ -8,17 +8,17 @@ const useUserContext = () => {
 }
 
 const UserProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+
     const value = {
-        user: null,
+        user: user,
+        setUser: setUser
     };
 
     return (
         <UserContext.Provider value={value}>
-            {value.user === null ? (
-                <EntranceStackScreen />
-            ) : (
-                children
-            )}
+            {children}
         </UserContext.Provider>
     )
 }

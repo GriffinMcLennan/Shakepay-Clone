@@ -10,12 +10,16 @@ import BuyScreen from './screens/BuyScreen'
 import RecurringBuysScreen from './screens/RecurringBuysScreen'
 import LimitOrdersScreen from './screens/LimitOrdersScreen'
 import { useModalContext } from './contexts/ModalProvider'
+import { useUserContext } from './contexts/UserProvider'
 import InteracModal from './components/InteracModal'
 import ShakingModal from './components/ShakingModal'
 import FromModal from './components/FromModal'
 import ToModal from './components/ToModal'
 import BitcoinModal from './components/BitcoinModal'
 import HeaderLeft from './components/HeaderLeft'
+import EntranceScreen from './screens/EntranceScreen'
+import SignInScreen from './screens/SignInScreen'
+import RegisterScreen from './screens/RegisterScreen'
 
 const Stack = createStackNavigator();
 
@@ -29,6 +33,8 @@ export default function Index() {
         toModalVisible,
         bitcoinModalVisible,
     } = useModalContext();
+
+    const { user } = useUserContext();
 
     return (
         <SafeAreaView style={styles.container}>
@@ -50,21 +56,34 @@ export default function Index() {
                     {toModalVisible && <ToModal />}
 
                     {bitcoinModalVisible && <BitcoinModal />}
-                    {/* <BitcoinModal /> */}
 
                     <Stack.Navigator>
-                        <Stack.Screen
-                            name="App"
-                            component={MyTabs}
-                            options={{ headerShown: false }}
-                        />
-                        <Stack.Screen name="Buy & sell" component={BuyScreen} options={{
-                            headerLeft: () => (
-                                <HeaderLeft />
+                        {
+                            user === null ? (
+                                <>
+                                    <Stack.Screen name="Entrance" component={EntranceScreen} options={{ headerShown: false }} />
+                                    <Stack.Screen name="Sign In" component={SignInScreen} />
+                                    <Stack.Screen name="Register" component={RegisterScreen} />
+                                </>
+                            ) : (
+                                <>
+                                    <Stack.Screen
+                                        name="App"
+                                        component={MyTabs}
+                                        options={{ headerShown: false }}
+                                    />
+                                    <Stack.Screen name="Buy & sell" component={BuyScreen} options={{
+                                        headerLeft: () => (
+                                            <HeaderLeft />
+                                        )
+                                    }} />
+                                    <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
+                                    <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
+
+                                </>
                             )
-                        }} />
-                        <Stack.Screen name="Recurring buys" component={RecurringBuysScreen} />
-                        <Stack.Screen name="Limit orders" component={LimitOrdersScreen} />
+                        }
+
                     </Stack.Navigator>
                 </NavigationContainer>
 

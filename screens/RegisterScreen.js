@@ -98,7 +98,7 @@ const RegisterScreen = ({ navigation }) => {
             </ScrollView>
             <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <GradientButton
-                    text="Log in"
+                    text="Continue"
                 />
             </View>
         </KeyboardAvoidingView >
