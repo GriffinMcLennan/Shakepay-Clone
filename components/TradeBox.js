@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../contexts/ModalProvider'
+import { formatNumber } from '../services/formatNumber';
 
 const GRAY = "#455d87";
 
 const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available }) => {
-    const amount = value !== undefined ? value : Number(amountArr.join("")).toLocaleString('en-US', { currency: 'USD' });
+    const amount = value !== undefined ? value : formatNumber(amountArr.join(""));
     const { toggleFromModalVisible, toggleToModalVisible } = useModalContext();
     const modalToggle = toFrom === "From" ? toggleFromModalVisible : toggleToModalVisible;
 

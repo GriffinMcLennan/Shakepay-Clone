@@ -1,13 +1,16 @@
 import React from 'react'
 import { StyleSheet, } from 'react-native'
 import { ModalProvider } from './contexts/ModalProvider'
+import { UserProvider } from './contexts/UserProvider'
 import Index from './Index'
 
 export default function App() {
     return (
-        <ModalProvider>
-            <Index />
-        </ModalProvider>
+        <UserProvider>
+            <ModalProvider>
+                <Index />
+            </ModalProvider>
+        </UserProvider>
     );
 }
 
