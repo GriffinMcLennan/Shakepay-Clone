@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 
-const SettingOption = ({ title }) => {
+const SettingOption = ({ title, onPress }) => {
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container} onPress={() => onPress && onPress()}>
             <Text style={styles.text}>{title}</Text>
-        </View>
+        </Pressable>
     )
 }
 

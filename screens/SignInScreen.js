@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, ScrollView, TextInput, Pressable, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TextInput, KeyboardAvoidingView } from 'react-native'
 import HeaderLeft from './../components/HeaderLeft'
 import GradientButton from './../components/GradientButton'
+import { useUserContext } from './../contexts/UserProvider'
 
 const SignInScreen = ({ navigation }) => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { login } = useUserContext();
 
     useEffect(() => {
         navigation.setOptions({
@@ -40,8 +42,8 @@ const SignInScreen = ({ navigation }) => {
                             <View style={styles.boxRow}>
                                 <TextInput
                                     style={styles.boxText}
-                                    onChangeText={(text) => setUsername(text)}
-                                    value={username}
+                                    onChangeText={(text) => setEmail(text)}
+                                    value={email}
                                     placeholder="Email"
                                     placeholderTextColor="#6581b3"
                                     autoFocus
@@ -69,6 +71,7 @@ const SignInScreen = ({ navigation }) => {
             <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <GradientButton
                     text="Log in"
+                    onPress={() => login(email, password)}
                 />
             </View>
 

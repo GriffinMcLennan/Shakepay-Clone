@@ -38,10 +38,7 @@ export default function Index() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                style={{ flex: 1, width: "100%" }}
-            >
+            <View style={styles.subcontainer}>
                 <NavigationContainer>
                     {tradeModalVisible && <TradeModal />}
 
@@ -101,4 +98,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: "100%",
     },
+    subcontainer: {
+        flex: 1,
+        width: "100%",
+    }
 });

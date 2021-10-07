@@ -3,13 +3,14 @@ import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TextInput } f
 import { CheckBox } from 'react-native-elements'
 import HeaderLeft from './../components/HeaderLeft'
 import GradientButton from './../components/GradientButton'
+import { useUserContext } from './../contexts/UserProvider'
 
 const RegisterScreen = ({ navigation }) => {
     const [shaketag, setShaketag] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [tosState, setTosState] = useState(false);
-
+    const { signUp } = useUserContext();
 
     useEffect(() => {
         navigation.setOptions({
@@ -61,7 +62,6 @@ const RegisterScreen = ({ navigation }) => {
                                     placeholder="Email"
                                     placeholderTextColor="#6581b3"
                                     autofocus
-                                    secureTextEntry
                                 />
                             </View>
                         </View>
@@ -99,6 +99,9 @@ const RegisterScreen = ({ navigation }) => {
             <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <GradientButton
                     text="Continue"
+                    onPress={() => {
+                        signUp(email, password)
+                    }}
                 />
             </View>
         </KeyboardAvoidingView >

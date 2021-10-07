@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 import ReferralInfo from './../components/ReferralInfo'
 import SettingOption from './../components/SettingOption'
+import { useUserContext } from './../contexts/UserProvider'
 const BLUE = "#109bfe";
 
 const SettingsScreen = ({ navigation }) => {
+    const { logout } = useUserContext();
+
     return (
         <View style={styles.container} >
             <Text style={styles.header}>Settings</Text>
@@ -51,7 +54,7 @@ const SettingsScreen = ({ navigation }) => {
                 <SettingOption title="Blog" />
                 <SettingOption title="Legal" />
                 <SettingOption title="App version" />
-                <SettingOption title="Log out" />
+                <SettingOption title="Log out" onPress={() => logout()} />
 
 
             </ScrollView>

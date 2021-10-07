@@ -10,9 +10,6 @@ import RegisterScreen from './../screens/RegisterScreen'
 const EntranceStack = createStackNavigator();
 
 const EntranceStackScreen = () => {
-    // const arr = [{ color: "purple", opacity: 0.3 }];
-    // console.log(...arr);
-
     return (
         <SafeAreaView style={styles.container}>
             <NavigationContainer>
