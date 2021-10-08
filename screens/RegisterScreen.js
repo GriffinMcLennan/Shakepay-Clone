@@ -100,7 +100,7 @@ const RegisterScreen = ({ navigation }) => {
                 <GradientButton
                     text="Continue"
                     onPress={() => {
-                        signUp(email, password)
+                        signUp(shaketag, email, password)
                     }}
                 />
             </View>

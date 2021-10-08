@@ -8,7 +8,7 @@ const Currency = ({ name, amount, Logo, price }) => {
 
     useEffect(() => {
         setValue(Number(price) * amount);
-    }, [price]);
+    }, [price, amount]);
 
     return (
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Currency History", {

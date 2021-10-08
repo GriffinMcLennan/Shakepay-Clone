@@ -2,14 +2,18 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import ShakeVisa from './../assets/ShakeVisa.jpg'
 import CardInfo from './../components/CardInfo'
+import { useUserContext } from './../contexts/UserProvider'
 
 const CardScreen = () => {
+    const { user } = useUserContext();
+    const { shaketag } = user;
+
     return (
         <View style={styles.container} >
             <Text style={styles.title}>Shakepay Card</Text>
             <Text style={styles.subtitle}>Spend dollars, earn bitcoin</Text>
             <Image style={styles.card} source={ShakeVisa} resizeMode="contain" />
-            <Text style={styles.greeting}>Hi $USER</Text>
+            <Text style={styles.greeting}>Hi ${shaketag}</Text>
 
             <View style={styles.info}>
                 <CardInfo number="142,610" description="Waitlist position" />

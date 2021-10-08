@@ -32,4 +32,5 @@ else {
 }
 
 const auth = firebase.auth();
-export { auth };
+const db = firebase.firestore();
+export { auth, db };

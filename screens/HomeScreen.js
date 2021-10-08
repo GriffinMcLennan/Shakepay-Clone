@@ -9,15 +9,25 @@ import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import Currency from './../components/Currency'
 import { basicPrices } from './../services/priceService'
 import { useModalContext } from './../contexts/ModalProvider'
+import { useUserContext } from './../contexts/UserProvider'
+import { db } from './../firebase'
 
 const HomeScreen = () => {
     const [bitcoinPrice, setBitcoinPrice] = useState("0");
     const [ethereumPrice, setEthereumPrice] = useState("0");
     const { toggleFundingModalVisible } = useModalContext();
-    const CADAmount = 150;
-    const bitcoinAmount = 0.059;
-    const ethereumAmount = 32;
-    const total = CADAmount + bitcoinAmount * bitcoinPrice + ethereumAmount * ethereumPrice;
+    const [dollarAmount, setDollarAmount] = useState(0);
+    const [bitcoinAmount, setBitcoinAmount] = useState(0);
+    const [ethereumAmount, setEthereumAmount] = useState(0);
+    // const dollarAmount = 150;
+    // const bitcoinAmount = 0.059;
+    // const ethereumAmount = 32;
+    const total = dollarAmount + bitcoinAmount * bitcoinPrice + ethereumAmount * ethereumPrice;
+
+    const { uid } = useUserContext();
+    // console.log(uid);
+
+    // console.log("dollar:", dollarAmount, "bitcoin:", bitcoinAmount, "ethereum:", ethereumAmount);
 
     useEffect(() => {
         const fetchPrices = async () => {
@@ -26,8 +36,26 @@ const HomeScreen = () => {
             setEthereumPrice(ethPrice);
         };
 
+        const getUserHoldings = async () => {
+            if (uid === null) {
+                return;
+            }
+
+            const docRef = await db.collection('users').doc(uid);
+            const doc = await docRef.get();
+
+            if (doc.exists) {
+                // console.log(doc.data());
+                const data = doc.data();
+                setDollarAmount(Number(data.Dollars));
+                setBitcoinAmount(Number(data.Bitcoin));
+                setEthereumAmount(Number(data.Ethereum));
+            }
+        };
+
         fetchPrices();
-    }, []);
+        getUserHoldings();
+    }, [uid]);
 
     return (
         <View style={styles.homescreen}>
@@ -47,7 +75,7 @@ const HomeScreen = () => {
             </View>
 
             <ScrollView style={styles.holdings}>
-                <Currency name={"Dollars"} amount={CADAmount} Logo={CadLogo} />
+                <Currency name={"Dollars"} amount={dollarAmount} Logo={CadLogo} />
                 <Currency name={"Bitcoin"} amount={bitcoinAmount} Logo={BitcoinLogo} price={bitcoinPrice} />
                 <Currency name={"Ethereum"} amount={ethereumAmount} Logo={EthereumLogo} price={ethereumPrice} />
             </ScrollView>
