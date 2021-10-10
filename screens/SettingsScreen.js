@@ -8,8 +8,7 @@ import { useUserContext } from './../contexts/UserProvider'
 const BLUE = "#109bfe";
 
 const SettingsScreen = ({ navigation }) => {
-    const { logout, user } = useUserContext();
-    const { shaketag, email } = user;
+    const { logout, shaketag, email } = useUserContext();
 
     return (
         <View style={styles.container} >
@@ -17,9 +16,11 @@ const SettingsScreen = ({ navigation }) => {
 
             <ScrollView>
                 <View style={styles.leftBuffer}>
-                    <Text style={styles.greetingText}>
-                        Hello <Text style={styles.bold}>@{shaketag}</Text>
-                    </Text>
+                    {shaketag &&
+                        <Text style={styles.greetingText}>
+                            Hello <Text style={styles.bold}>@{shaketag}</Text>
+                        </Text>
+                    }
 
                     <View style={styles.row}>
                         <FontAwesomeIcon icon={faCheckSquare} size={20} color={BLUE} />
@@ -28,7 +29,7 @@ const SettingsScreen = ({ navigation }) => {
 
                     <View style={styles.row}>
                         <FontAwesomeIcon icon={faCheckSquare} size={20} color={BLUE} />
-                        <Text style={styles.infoText}>{email}</Text>
+                        {email && <Text style={styles.infoText}>{email}</Text>}
                     </View>
 
                     <View style={styles.row}>

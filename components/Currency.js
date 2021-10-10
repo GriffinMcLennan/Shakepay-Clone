@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { truncate } from './../services/truncate'
 
 const Currency = ({ name, amount, Logo, price }) => {
     const navigation = useNavigation();
     const [value, setValue] = useState(0);
+
+    console.log(amount, typeof (amount));
 
     useEffect(() => {
         setValue(Number(price) * amount);
@@ -21,15 +24,15 @@ const Currency = ({ name, amount, Logo, price }) => {
                     <View>
                         <Text style={styles.title}>{name}</Text>
                         {
-                            price && (<Text style={styles.priceInfo}>${Number(price).toLocaleString('en-US', { currency: 'USD' })}</Text>)
+                            price && (<Text style={styles.priceInfo}>${truncate(Number(price).toLocaleString('en-US', { currency: 'USD' }))}</Text>)
                         }
                     </View>
                 </View>
 
                 <View style={{ alignItems: "flex-end" }}>
-                    <Text style={styles.title}>{amount}</Text>
+                    <Text style={styles.title}>{truncate(amount.toString())}</Text>
                     {
-                        price && (<Text style={styles.priceInfo}>${value.toLocaleString('en-US', { currency: 'USD' })}</Text>)
+                        price && (<Text style={styles.priceInfo}>${truncate(value.toLocaleString('en-US', { currency: 'USD' }))}</Text>)
                     }
                 </View>
             </View>

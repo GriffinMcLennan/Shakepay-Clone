@@ -10,6 +10,11 @@ import { basicPrices } from './../services/priceService'
 import { useModalContext } from './../contexts/ModalProvider'
 import SwapButton from './../components/SwapButton'
 import ConversionInfo from '../components/ConversionInfo.js'
+import { handleTransaction } from './../services/handleTransaction'
+import { useUserContext } from './../contexts/UserProvider'
+import { useIsFocused } from "@react-navigation/native";
+import { db } from './../firebase'
+
 
 const RED = "#f1326b";
 const ORANGE = "#f79218";
@@ -22,6 +27,8 @@ const BuyScreen = ({ route }) => {
     const [bitcoinPrice, setBitcoinPrice] = useState(null);
     const [ethereumPrice, setEthereumPrice] = useState(null);
     const [convertedValue, setConvertedValue] = useState(0);
+    const { uid } = useUserContext();
+    const isFocused = useIsFocused();
 
     const {
         fromCurrency,
@@ -30,9 +37,24 @@ const BuyScreen = ({ route }) => {
         setToCurrency,
     } = useModalContext();
 
-    const availableCAD = 1000;
-    const availableBTC = 2;
-    const availableETH = 0;
+    const [availableCAD, setAvailableCAD] = useState(0);
+    const [availableBTC, setAvailableBTC] = useState(0);
+    const [availableETH, setAvailableETH] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const userDocRef = db.collection('users').doc(uid);
+            const userDoc = await userDocRef.get();
+            const data = userDoc.data();
+            setAvailableCAD(data.Dollars);
+            setAvailableBTC(data.Bitcoin);
+            setAvailableETH(data.Ethereum);
+        }
+
+        if (isFocused === true) {
+            fetchData();
+        }
+    }, [isFocused]);
     const buySell = fromCurrency === "Dollars" ? "Buy" : "Sell";
     const crypto = buySell === "Buy" ? toCurrency : fromCurrency;
 
@@ -218,7 +240,7 @@ const BuyScreen = ({ route }) => {
                     <Pressable
                         style={{ width: "100%", alignItems: "center" }}
                         onPress={() => {
-                            console.log("Connect to API")
+                            handleTransaction(fromCurrency, toCurrency, number, uid, convertedValue);
                         }}
                     >
                         <LinearGradient

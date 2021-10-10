@@ -5,15 +5,14 @@ import CardInfo from './../components/CardInfo'
 import { useUserContext } from './../contexts/UserProvider'
 
 const CardScreen = () => {
-    const { user } = useUserContext();
-    const { shaketag } = user;
+    const { shaketag } = useUserContext();
 
     return (
         <View style={styles.container} >
             <Text style={styles.title}>Shakepay Card</Text>
             <Text style={styles.subtitle}>Spend dollars, earn bitcoin</Text>
             <Image style={styles.card} source={ShakeVisa} resizeMode="contain" />
-            <Text style={styles.greeting}>Hi ${shaketag}</Text>
+            {shaketag && <Text style={styles.greeting}>Hi ${shaketag}</Text>}
 
             <View style={styles.info}>
                 <CardInfo number="142,610" description="Waitlist position" />

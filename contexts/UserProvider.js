@@ -13,6 +13,7 @@ const useUserContext = () => {
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [shaketag, setShaketag] = useState(null);
+    const [email, setEmail] = useState(null);
     const uid = auth?.currentUser?.uid;
 
     const signUp = async (shaketag, email, password) => {
@@ -44,29 +45,31 @@ const UserProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            const userDocRef = db.collection('users').doc(uid);
-            const userDoc = await userDocRef.get();
-            const data = userDoc.data();
-
-            setUser({
-                email: data.email,
-                shaketag: data.shaketag,
-            });
-        };
-
         const unsubscribe = auth.onAuthStateChanged(userData => {
-            if (userData === null) {
-                setUser(null);
-            }
-            else {
-                fetchUserData();
-            }
+            setUser(userData);
         });
 
         return unsubscribe;
     }, []);
 
+    useEffect(() => {
+        const getAccountInfo = async () => {
+            try {
+                const userDocRef = db.collection('users').doc(uid);
+                const userDoc = await userDocRef.get();
+                const data = userDoc.data();
+                setShaketag(data.shaketag);
+                setEmail(data.email);
+            }
+            catch (e) {
+                console.log(e);
+            }
+        };
+
+        if (uid !== undefined) {
+            getAccountInfo();
+        }
+    }, [uid]);
 
     const value = {
         user,
@@ -74,6 +77,8 @@ const UserProvider = ({ children }) => {
         signUp,
         login,
         logout,
+        email,
+        shaketag,
     };
 
     return (

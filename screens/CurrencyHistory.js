@@ -4,10 +4,14 @@ import { ChartPathProvider, } from '@rainbow-me/animated-charts'
 import priceService from './../services/priceService'
 import Chart from './../components/Chart'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowDown, faArrowUp, faChevronLeft, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import Transactions from '../components/Transactions'
 import { useModalContext } from './../contexts/ModalProvider'
 import HeaderLeft from './../components/HeaderLeft'
+import { useUserContext } from './../contexts/UserProvider'
+import { db } from './../firebase'
+import { useIsFocused } from "@react-navigation/native";
+import { truncate } from './../services/truncate'
 
 const link = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=bidaily";
 const { width: SIZE } = Dimensions.get("window");
@@ -18,12 +22,24 @@ const MONTH = "M";
 const YEAR = "Y";
 
 const periods = [HOUR, DAY, WEEK, MONTH, YEAR];
+const data = [{ type: "Buy", date: "Apr 12", amount: "0.5123" },
+{ type: "Send", address: "eth:0x0cFD9aFDXCG31", date: "Apr 11", amount: "0.031" },
+{ type: "Receive", date: "Apr 15", amount: "3.4", address: "eth:0x93291fdfdsa31" },
+];
+
 
 
 const CurrencyHistory = ({ navigation, route }) => {
     const [timePeriod, setTimePeriod] = useState(DAY);
+    const [currencyAmount, setCurrencyAmount] = useState(0);
+    const [transactions, setTransactions] = useState([]);
     const { name, currentPrice } = route.params;
     const { setFromCurrency, setToCurrency } = useModalContext();
+    const { uid } = useUserContext();
+    const isFocused = useIsFocused();
+    const total = Number(currencyAmount) * Number(currentPrice);
+
+    // console.log(transactions);
 
     const setCurrencies = () => {
         if (name === 'Dollars') {
@@ -42,9 +58,6 @@ const CurrencyHistory = ({ navigation, route }) => {
             title: name,
             headerStyle: { shadowColor: "transparent" },
             headerLeft: () => (
-                // <Pressable onPress={() => navigation.pop()}>
-                //     <FontAwesomeIcon icon={faChevronLeft} size={20} />
-                // </Pressable>
                 <HeaderLeft />
             ),
             headerRight: () => (
@@ -54,6 +67,32 @@ const CurrencyHistory = ({ navigation, route }) => {
             )
         });
     }, []);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const userDocRef = db.collection('users').doc(uid);
+            const userDoc = await userDocRef.get();
+            const data = userDoc.data();
+
+            if (name === 'Bitcoin') {
+                setCurrencyAmount(data.Bitcoin);
+                setTransactions(data.BitcoinTransactions);
+            }
+            else if (name === 'Dollars') {
+                setCurrencyAmount(data.Dollars);
+                setTransactions(data.DollarTransactions);
+            }
+            else if (name === 'Ethereum') {
+                setCurrencyAmount(data.Ethereum);
+                setTransactions(data.EthereumTransactions);
+            }
+        };
+
+        if (isFocused === true) {
+            fetchData();
+        }
+    }, [isFocused]);
 
     const [hourPrices, setHourPrices] = useState([]);
     const [dayPrices, setDayPrices] = useState([]);
@@ -84,7 +123,6 @@ const CurrencyHistory = ({ navigation, route }) => {
             }
 
             const data = await priceService(name, timePeriod);
-            const n = data.length;
             setArrRef(data);
         };
 
@@ -120,12 +158,12 @@ const CurrencyHistory = ({ navigation, route }) => {
                 <View style={styles.balanceRow}>
                     <View style={styles.balanceDescription}>
                         <Text style={styles.balancePrimary}>Balance</Text>
-                        <Text style={styles.balanceSecondary}>in CAD</Text>
+                        {name !== 'Dollars' && <Text style={styles.balanceSecondary}>in CAD</Text>}
                     </View>
 
                     <View style={styles.balanceValues}>
-                        <Text style={styles.balancePrimary}>0.009434</Text>
-                        <Text style={styles.balanceSecondary}>$55.04</Text>
+                        <Text style={styles.balancePrimary}>{truncate(currencyAmount.toString())}</Text>
+                        {name !== 'Dollars' && <Text style={styles.balanceSecondary}>${truncate(total.toString())}</Text>}
                     </View>
                 </View>
 
@@ -141,7 +179,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                     </Pressable>
                 </View>
 
-                <Transactions currency={name} />
+                <Transactions transactionsData={transactions} currency={name} />
             </ScrollView>
         </View>
 

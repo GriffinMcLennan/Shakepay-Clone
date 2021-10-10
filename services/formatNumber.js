@@ -1,4 +1,8 @@
 const formatNumber = (number) => {
+    if (typeof (number) !== 'String') {
+        number = number.toString();
+    }
+
     const n = number.length;
 
     const parts = number.split(".");

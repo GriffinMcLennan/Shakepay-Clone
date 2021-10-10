@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../contexts/ModalProvider'
 import { formatNumber } from '../services/formatNumber';
+import { truncate } from './../services/truncate'
 
 const GRAY = "#455d87";
 
@@ -23,7 +24,7 @@ const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available })
                         <Text style={{ fontWeight: "400", fontSize: 18, marginRight: 7, }}>{currency}</Text>
                         <FontAwesomeIcon icon={faChevronDown} />
                     </View>
-                    <Text style={{ color: GRAY, fontSize: 14, }}>{available}</Text>
+                    <Text style={{ color: GRAY, fontSize: 14, }}>{truncate(available)}</Text>
                 </View>
             </Pressable>
 

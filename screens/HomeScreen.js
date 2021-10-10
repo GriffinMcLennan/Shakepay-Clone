@@ -11,6 +11,8 @@ import { basicPrices } from './../services/priceService'
 import { useModalContext } from './../contexts/ModalProvider'
 import { useUserContext } from './../contexts/UserProvider'
 import { db } from './../firebase'
+import { useIsFocused } from "@react-navigation/native";
+import { truncate } from './../services/truncate'
 
 const HomeScreen = () => {
     const [bitcoinPrice, setBitcoinPrice] = useState("0");
@@ -19,15 +21,9 @@ const HomeScreen = () => {
     const [dollarAmount, setDollarAmount] = useState(0);
     const [bitcoinAmount, setBitcoinAmount] = useState(0);
     const [ethereumAmount, setEthereumAmount] = useState(0);
-    // const dollarAmount = 150;
-    // const bitcoinAmount = 0.059;
-    // const ethereumAmount = 32;
-    const total = dollarAmount + bitcoinAmount * bitcoinPrice + ethereumAmount * ethereumPrice;
-
     const { uid } = useUserContext();
-    // console.log(uid);
-
-    // console.log("dollar:", dollarAmount, "bitcoin:", bitcoinAmount, "ethereum:", ethereumAmount);
+    const total = dollarAmount + bitcoinAmount * bitcoinPrice + ethereumAmount * ethereumPrice;
+    const isFocused = useIsFocused();
 
     useEffect(() => {
         const fetchPrices = async () => {
@@ -45,7 +41,6 @@ const HomeScreen = () => {
             const doc = await docRef.get();
 
             if (doc.exists) {
-                // console.log(doc.data());
                 const data = doc.data();
                 setDollarAmount(Number(data.Dollars));
                 setBitcoinAmount(Number(data.Bitcoin));
@@ -53,14 +48,16 @@ const HomeScreen = () => {
             }
         };
 
-        fetchPrices();
-        getUserHoldings();
-    }, [uid]);
+        if (isFocused === true) {
+            fetchPrices();
+            getUserHoldings();
+        }
+    }, [uid, isFocused]);
 
     return (
         <View style={styles.homescreen}>
             <ShakepayLogo width={40} height={40} marginTop={10} />
-            <Text style={styles.portfolioValue}>${total.toLocaleString('en-US', { currency: 'USD' })}</Text>
+            <Text style={styles.portfolioValue}>${truncate(total.toLocaleString('en-US', { currency: 'USD' }))}</Text>
 
             <View style={styles.buttons}>
                 <Pressable style={styles.button} onPress={() => toggleFundingModalVisible()} >
