@@ -20,6 +20,7 @@ import HeaderLeft from './components/HeaderLeft'
 import EntranceScreen from './screens/EntranceScreen'
 import SignInScreen from './screens/SignInScreen'
 import RegisterScreen from './screens/RegisterScreen'
+import TransactionModal from './components/TransactionModal'
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,8 @@ export default function Index() {
                     {toModalVisible && <ToModal />}
 
                     {bitcoinModalVisible && <BitcoinModal />}
+
+                    {true && <TransactionModal />}
 
                     <Stack.Navigator>
                         {

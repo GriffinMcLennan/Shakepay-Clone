@@ -4,9 +4,11 @@ import InteracLogo from './../assets/interac_logo.png'
 import { useModalContext } from './../contexts/ModalProvider'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCopy, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useUserContext } from './../contexts/UserProvider'
 
 const InteracModal = () => {
     const { toggleInteracModalVisible } = useModalContext();
+    const { shaketag } = useUserContext();
 
     return (
         <View style={styles.modalView}>
@@ -39,7 +41,7 @@ const InteracModal = () => {
 
                     <View style={styles.box}>
                         <View style={styles.boxRow}>
-                            <Text style={styles.boxText}>$USER</Text>
+                            <Text style={styles.boxText}>${shaketag}</Text>
                             <FontAwesomeIcon icon={faCopy} color={"#059fff"} />
                         </View>
                     </View>

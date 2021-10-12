@@ -163,7 +163,7 @@ const CurrencyHistory = ({ navigation, route }) => {
 
                     <View style={styles.balanceValues}>
                         <Text style={styles.balancePrimary}>{truncate(currencyAmount.toString())}</Text>
-                        {name !== 'Dollars' && <Text style={styles.balanceSecondary}>${truncate(total.toString())}</Text>}
+                        {name !== 'Dollars' && <Text style={styles.balanceSecondary}>${truncate(total.toLocaleString('en-US', { currency: 'USD' }))}</Text>}
                     </View>
                 </View>
 
@@ -179,7 +179,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                     </Pressable>
                 </View>
 
-                <Transactions transactionsData={transactions} currency={name} />
+                <Transactions transactionsData={transactions.reverse()} currency={name} />
             </ScrollView>
         </View>
 
@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
     },
     balanceValues: {
         margin: 10,
+        alignItems: "flex-end",
     },
     balancePrimary: {
         fontSize: 20,

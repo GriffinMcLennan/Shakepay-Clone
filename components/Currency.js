@@ -7,7 +7,12 @@ const Currency = ({ name, amount, Logo, price }) => {
     const navigation = useNavigation();
     const [value, setValue] = useState(0);
 
-    console.log(amount, typeof (amount));
+    useEffect(() => {
+        if (name === 'Dollars') {
+            amount = amount.toLocaleString('en-US', { currency: 'USD' });
+            console.log(amount);
+        }
+    }, [amount]);
 
     useEffect(() => {
         setValue(Number(price) * amount);
@@ -30,7 +35,7 @@ const Currency = ({ name, amount, Logo, price }) => {
                 </View>
 
                 <View style={{ alignItems: "flex-end" }}>
-                    <Text style={styles.title}>{truncate(amount.toString())}</Text>
+                    <Text style={styles.title}>{truncate((name === 'Dollars' ? amount.toLocaleString('en-US', { currency: 'USD' }) : amount.toString()))}</Text>
                     {
                         price && (<Text style={styles.priceInfo}>${truncate(value.toLocaleString('en-US', { currency: 'USD' }))}</Text>)
                     }
