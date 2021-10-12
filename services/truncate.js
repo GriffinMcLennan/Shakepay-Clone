@@ -1,5 +1,8 @@
 const truncate = (str) => {
+    if (str === undefined || str === null) return;
     const n = str.length;
+
+    if (n === undefined || n === null) return;
 
     if (n <= 9) {
         return str;

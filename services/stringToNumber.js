@@ -1,4 +1,8 @@
 const stringToNumber = (s) => {
+    console.log(s, typeof (s));
+    if (typeof (s) == "number") {
+        s = s.toString();
+    }
     return Number(s.replaceAll(',', ''));
 }
 

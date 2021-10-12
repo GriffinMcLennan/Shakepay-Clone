@@ -21,6 +21,7 @@ import EntranceScreen from './screens/EntranceScreen'
 import SignInScreen from './screens/SignInScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import TransactionModal from './components/TransactionModal'
+import TradeCompleteModal from './components/TradeCompleteModal';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,8 @@ export default function Index() {
         fromModalVisible,
         toModalVisible,
         bitcoinModalVisible,
+        transactionModalVisible,
+        tradeCompleteModalVisible,
     } = useModalContext();
 
     const { user } = useUserContext();
@@ -55,7 +58,9 @@ export default function Index() {
 
                     {bitcoinModalVisible && <BitcoinModal />}
 
-                    {true && <TransactionModal />}
+                    {transactionModalVisible && <TransactionModal />}
+
+                    {tradeCompleteModalVisible && <TradeCompleteModal />}
 
                     <Stack.Navigator>
                         {

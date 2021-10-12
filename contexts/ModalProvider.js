@@ -14,8 +14,12 @@ const ModalProvider = ({ children }) => {
     const [fromModalVisible, setFromModalVisible] = useState(false);
     const [toModalVisible, setToModalVisible] = useState(false);
     const [bitcoinModalVisible, setBitcoinModalVisible] = useState(false);
+    const [transactionModalVisible, setTransactionModalVisible] = useState(false);
+    const [tradeCompleteModalVisible, setTradeCompleteModalVisible] = useState(false);
     const [fromCurrency, setFromCurrency] = useState();
     const [toCurrency, setToCurrency] = useState("Dollars");
+    const [fromCurrencyAmount, setFromCurrencyAmount] = useState();
+    const [toCurrencyAmount, setToCurrencyAmount] = useState();
 
     const toggleTradeModalVisible = () => {
         setTradeModalVisible(!tradeModalVisible);
@@ -45,6 +49,14 @@ const ModalProvider = ({ children }) => {
         setBitcoinModalVisible(!bitcoinModalVisible);
     }
 
+    const toggleTransactionModalVisible = () => {
+        setTransactionModalVisible(!transactionModalVisible);
+    }
+
+    const toggleTradeCompleteModalVisible = () => {
+        setTradeCompleteModalVisible(!tradeCompleteModalVisible);
+    }
+
     const value = {
         tradeModalVisible,
         toggleTradeModalVisible,
@@ -64,6 +76,14 @@ const ModalProvider = ({ children }) => {
         toggleToModalVisible,
         bitcoinModalVisible,
         toggleBitcoinModalVisible,
+        transactionModalVisible,
+        toggleTransactionModalVisible,
+        fromCurrencyAmount,
+        setFromCurrencyAmount,
+        toCurrencyAmount,
+        setToCurrencyAmount,
+        tradeCompleteModalVisible,
+        toggleTradeCompleteModalVisible,
     };
 
     return (

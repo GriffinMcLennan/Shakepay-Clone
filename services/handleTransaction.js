@@ -2,7 +2,7 @@ import { db } from './../firebase'
 import { formatNumber } from './formatNumber'
 import { stringToNumber } from './stringToNumber'
 
-const handleTransaction = async (fromCurrency, toCurrency, numArr, uid, toAmount) => {
+const handleTransaction = async (fromCurrency, toCurrency, fromAmount, uid, toAmount) => {
     const userDocRef = db.collection('users').doc(uid);
     const userDoc = await userDocRef.get();
     const data = userDoc.data();
@@ -20,9 +20,9 @@ const handleTransaction = async (fromCurrency, toCurrency, numArr, uid, toAmount
     Dollars = Number(Dollars);
 
 
-    const fromAmountNum = Number(numArr.join(""));
     const toAmountNum = stringToNumber(toAmount);
-    const fromAmountFormattedArr = formatNumber(fromAmountNum);
+    const fromAmountNum = stringToNumber(fromAmount);
+    const fromAmountFormattedArr = formatNumber(fromAmount);
 
     const fromAmountFormatted = fromAmountFormattedArr.join("");
     const toAmountFormatted = formatNumber(toAmountNum).join("");

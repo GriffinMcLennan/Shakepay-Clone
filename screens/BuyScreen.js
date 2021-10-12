@@ -35,6 +35,9 @@ const BuyScreen = ({ route }) => {
         setFromCurrency,
         toCurrency,
         setToCurrency,
+        toggleTransactionModalVisible,
+        setFromCurrencyAmount,
+        setToCurrencyAmount,
     } = useModalContext();
 
     const [availableCAD, setAvailableCAD] = useState(0);
@@ -92,8 +95,9 @@ const BuyScreen = ({ route }) => {
     }, []);
 
     useEffect(() => {
-        if (bitcoinPrice !== null) {
+        if (bitcoinPrice !== null && ethereumPrice !== null) {
             const nonConverted = Number(number.join(""));
+            setFromCurrencyAmount(nonConverted);
 
             const converted = fromCurrency === "Dollars" ?
                 (nonConverted / currencyToInfo[toCurrency].price)
@@ -102,6 +106,7 @@ const BuyScreen = ({ route }) => {
 
             const formatted = Number(converted).toLocaleString('en-US', { currency: 'USD' });
             setConvertedValue(formatted);
+            setToCurrencyAmount(formatted);
         }
     }, [number]);
 
@@ -240,7 +245,8 @@ const BuyScreen = ({ route }) => {
                     <Pressable
                         style={{ width: "100%", alignItems: "center" }}
                         onPress={() => {
-                            handleTransaction(fromCurrency, toCurrency, number, uid, convertedValue);
+                            toggleTransactionModalVisible();
+                            // handleTransaction(fromCurrency, toCurrency, number, uid, convertedValue);
                         }}
                     >
                         <LinearGradient
