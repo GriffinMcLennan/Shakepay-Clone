@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable, Modal, Image } from 'react-native'
-import InteracLogo from './../assets/interac_logo.png'
-import { useModalContext } from './../contexts/ModalProvider'
+import InteracLogo from '../../assets/interac_logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCopy, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { useUserContext } from './../contexts/UserProvider'
+import { useModalContext } from './../../contexts/ModalProvider'
+import { useUserContext } from './../../contexts/UserProvider'
 
 const InteracModal = () => {
     const { toggleInteracModalVisible } = useModalContext();
@@ -18,13 +18,19 @@ const InteracModal = () => {
                 <View style={styles.container}>
                     <Pressable
                         onPress={() => toggleInteracModalVisible()}
-                        style={{ flexDirection: "row", height: 30, width: "100%", justifyContent: "flex-end", alignItems: "center", marginRight: 10, paddingTop: 20 }}
+                        style={styles.header}
                     >
-                        <View style={{ width: 50, height: 50, alignItems: "center", }}>
-                            <FontAwesomeIcon icon={faTimes} size={22} />
+                        <View style={styles.cross}>
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                size={22}
+                            />
                         </View>
                     </Pressable>
-                    <Image source={InteracLogo} style={{ height: 80, width: 80, marginTop: 100, }} />
+                    <Image
+                        source={InteracLogo}
+                        style={styles.image}
+                    />
 
                     <Text style={styles.title}>Important Instructions</Text>
 
@@ -33,7 +39,10 @@ const InteracModal = () => {
                     <View style={styles.box}>
                         <View style={styles.boxRow}>
                             <Text style={styles.boxText}>funding@etransfers.shakepay.com</Text>
-                            <FontAwesomeIcon icon={faCopy} color={"#059fff"} />
+                            <FontAwesomeIcon
+                                icon={faCopy}
+                                color={"#059fff"}
+                            />
                         </View>
                     </View>
 
@@ -42,7 +51,10 @@ const InteracModal = () => {
                     <View style={styles.box}>
                         <View style={styles.boxRow}>
                             <Text style={styles.boxText}>${shaketag}</Text>
-                            <FontAwesomeIcon icon={faCopy} color={"#059fff"} />
+                            <FontAwesomeIcon
+                                icon={faCopy}
+                                color={"#059fff"}
+                            />
                         </View>
                     </View>
                     <Text style={styles.instruction}>3. Use this code as the security answer:</Text>
@@ -50,13 +62,16 @@ const InteracModal = () => {
                     <View style={styles.box}>
                         <View style={styles.boxRow}>
                             <Text style={[styles.boxText, { fontSize: 16 }]}>32NGDF32N</Text>
-                            <FontAwesomeIcon icon={faCopy} color={"#059fff"} />
+                            <FontAwesomeIcon
+                                icon={faCopy}
+                                color={"#059fff"}
+                            />
                         </View>
                     </View>
 
                     <Text style={styles.disclaimer}>
                         <Text>It can take </Text>
-                        <Text style={{ color: "black", fontWeight: "600" }}>up to one hour </Text>
+                        <Text style={styles.bold}>up to one hour </Text>
                         <Text>for Shakepay to receive the transfer.</Text>
                     </Text>
                 </View>
@@ -109,5 +124,28 @@ const styles = StyleSheet.create({
         color: "#455d87",
         fontSize: 14,
         marginTop: 15,
+    },
+    header: {
+        flexDirection: "row",
+        height: 30,
+        width: "100%",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        marginRight: 10,
+        paddingTop: 20
+    },
+    cross: {
+        width: 50,
+        height: 50,
+        alignItems: "center",
+    },
+    image: {
+        height: 80,
+        width: 80,
+        marginTop: 100,
+    },
+    bold: {
+        color: "black",
+        fontWeight: "600"
     }
 })

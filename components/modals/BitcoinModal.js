@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, View, Modal, Pressable } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCopy, faTimes } from '@fortawesome/free-solid-svg-icons'
-import BitcoinLogo from './../assets/btc.svg'
+import BitcoinLogo from './../../assets/btc.svg'
 import QRCode from 'react-native-qrcode-svg';
-import { useModalContext } from './../contexts/ModalProvider'
+import { useModalContext } from '../../contexts/ModalProvider'
 
 const BitcoinModal = () => {
     const { toggleBitcoinModalVisible } = useModalContext();
@@ -17,9 +17,18 @@ const BitcoinModal = () => {
                     style={styles.exit}
                     onPress={() => toggleBitcoinModalVisible()}
                 >
-                    <FontAwesomeIcon icon={faTimes} size={22} />
+                    <FontAwesomeIcon
+                        icon={faTimes}
+                        size={22}
+                    />
                 </Pressable>
-                <BitcoinLogo height={50} width={50} marginTop={90} />
+
+                <BitcoinLogo
+                    height={50}
+                    width={50}
+                    marginTop={90}
+                />
+
                 <Text style={styles.header}>
                     Only send <Text style={styles.bold}>Bitcoin (BTC)</Text> to this address.
                 </Text>
@@ -30,7 +39,7 @@ const BitcoinModal = () => {
                 </Text>
 
                 <QRCode
-                    value="asjdfkasjfd"
+                    value="Place Bitcoin Address Here"
                     size={200}
                 />
 

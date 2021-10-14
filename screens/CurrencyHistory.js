@@ -22,12 +22,6 @@ const MONTH = "M";
 const YEAR = "Y";
 
 const periods = [HOUR, DAY, WEEK, MONTH, YEAR];
-const data = [{ type: "Buy", date: "Apr 12", amount: "0.5123" },
-{ type: "Send", address: "eth:0x0cFD9aFDXCG31", date: "Apr 11", amount: "0.031" },
-{ type: "Receive", date: "Apr 15", amount: "3.4", address: "eth:0x93291fdfdsa31" },
-];
-
-
 
 const CurrencyHistory = ({ navigation, route }) => {
     const [timePeriod, setTimePeriod] = useState(DAY);
@@ -39,7 +33,6 @@ const CurrencyHistory = ({ navigation, route }) => {
     const isFocused = useIsFocused();
     const total = Number(currencyAmount) * Number(currentPrice);
 
-    // console.log(transactions);
 
     const setCurrencies = () => {
         if (name === 'Dollars') {
@@ -77,15 +70,15 @@ const CurrencyHistory = ({ navigation, route }) => {
 
             if (name === 'Bitcoin') {
                 setCurrencyAmount(data.Bitcoin);
-                setTransactions(data.BitcoinTransactions);
+                setTransactions(data.BitcoinTransactions.reverse());
             }
             else if (name === 'Dollars') {
                 setCurrencyAmount(data.Dollars);
-                setTransactions(data.DollarTransactions);
+                setTransactions(data.DollarTransactions.reverse());
             }
             else if (name === 'Ethereum') {
                 setCurrencyAmount(data.Ethereum);
-                setTransactions(data.EthereumTransactions);
+                setTransactions(data.EthereumTransactions.reverse());
             }
         };
 
@@ -179,7 +172,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                     </Pressable>
                 </View>
 
-                <Transactions transactionsData={transactions.reverse()} currency={name} />
+                <Transactions transactionsData={transactions} currency={name} />
             </ScrollView>
         </View>
 

@@ -2,14 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Transaction from './Transaction'
 
-
 const Transactions = ({ transactionsData, currency }) => {
+    const n = transactionsData.length;
+
     return (
         <View>
             <Text style={styles.header}>Transactions</Text>
             {
-                transactionsData.map((tuple) => (
-                    <Transaction key={`${tuple.type}${tuple.date}${tuple.amount}${tuple.address}`} {...tuple} currency={currency} />
+                transactionsData.map((tuple, ind) => (
+                    <Transaction key={n - ind} {...tuple} currency={currency} />
                 ))
             }
         </View>

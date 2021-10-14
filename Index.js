@@ -3,25 +3,25 @@ import React, { useState, useContext } from 'react'
 import { StyleSheet, Text, View, KeyboardAvoidingView, SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
-import TradeModal from './components/TradeModal'
-import FundingModal from './components/FundingModal';
+import TradeModal from './components/modals/TradeModal'
+import FundingModal from './components/modals/FundingModal';
 import MyTabs from './navigation/MyTabs'
 import BuyScreen from './screens/BuyScreen'
 import RecurringBuysScreen from './screens/RecurringBuysScreen'
 import LimitOrdersScreen from './screens/LimitOrdersScreen'
 import { useModalContext } from './contexts/ModalProvider'
 import { useUserContext } from './contexts/UserProvider'
-import InteracModal from './components/InteracModal'
-import ShakingModal from './components/ShakingModal'
-import FromModal from './components/FromModal'
-import ToModal from './components/ToModal'
-import BitcoinModal from './components/BitcoinModal'
+import InteracModal from './components/modals/InteracModal'
+import ShakingModal from './components/modals/ShakingModal'
+import FromModal from './components/modals/FromModal'
+import ToModal from './components/modals/ToModal'
+import BitcoinModal from './components/modals/BitcoinModal'
 import HeaderLeft from './components/HeaderLeft'
 import EntranceScreen from './screens/EntranceScreen'
 import SignInScreen from './screens/SignInScreen'
 import RegisterScreen from './screens/RegisterScreen'
-import TransactionModal from './components/TransactionModal'
-import TradeCompleteModal from './components/TradeCompleteModal';
+import TransactionModal from './components/modals/TransactionModal'
+import TradeCompleteModal from './components/modals/TradeCompleteModal';
 
 const Stack = createStackNavigator();
 

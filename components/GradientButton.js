@@ -7,7 +7,9 @@ const GradientButton = ({ onPress, text, disableButton = false, ...rest }) => {
         <Pressable
             style={[styles.container, { ...rest }]}
             onPress={() => {
-                onPress();
+                if (!disableButton) {
+                    onPress();
+                }
             }}
         >
             <LinearGradient

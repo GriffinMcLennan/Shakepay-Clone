@@ -2,17 +2,21 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import TradeModalOption from './TradeModalOption'
 import { Dimensions } from 'react-native'
-import BitcoinLogo from './../assets/btc.svg'
-import EthereumLogo from './../assets/eth.svg'
-import InteracLogo from './../assets/interac_logo.jpg'
-import WireTransferLogo from './../assets/wire.png'
-import { useModalContext } from './../contexts/ModalProvider'
+import BitcoinLogo from '../../assets/btc.svg'
+import EthereumLogo from '../../assets/eth.svg'
+import InteracLogo from '../../assets/interac_logo.jpg'
+import WireTransferLogo from '../../assets/wire.png'
+import { useModalContext } from '../../contexts/ModalProvider'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const FundingModal = ({ toggleOverlay }) => {
-    const { toggleFundingModalVisible, toggleInteracModalVisible, toggleBitcoinModalVisible } = useModalContext();
+const FundingModal = () => {
+    const {
+        toggleFundingModalVisible,
+        toggleInteracModalVisible,
+        toggleBitcoinModalVisible
+    } = useModalContext();
 
     return (
         <TouchableWithoutFeedback onPress={toggleFundingModalVisible} >
@@ -20,10 +24,29 @@ const FundingModal = ({ toggleOverlay }) => {
                 <TouchableWithoutFeedback >
                     <View style={[styles.modal, styles.infoModal]}>
                         <Text style={styles.text}>Choose a funding option</Text>
-                        <TradeModalOption title="Interac e-Transfer" ImageSrc={InteracLogo} toggleModal={toggleFundingModalVisible} toggleLinkModal={toggleInteracModalVisible} />
-                        <TradeModalOption title="Bitcoin" SVG={BitcoinLogo} toggleModal={toggleFundingModalVisible} toggleLinkModal={toggleBitcoinModalVisible} />
-                        <TradeModalOption title="Ethereum" SVG={EthereumLogo} toggleModal={toggleFundingModalVisible} />
-                        <TradeModalOption title="Wire Transfer" ImageSrc={WireTransferLogo} last={true} toggleModal={toggleFundingModalVisible} />
+                        <TradeModalOption
+                            title="Interac e-Transfer"
+                            ImageSrc={InteracLogo}
+                            toggleModal={toggleFundingModalVisible}
+                            toggleNewModal={toggleInteracModalVisible}
+                        />
+                        <TradeModalOption
+                            title="Bitcoin"
+                            SVG={BitcoinLogo}
+                            toggleModal={toggleFundingModalVisible}
+                            toggleNewModal={toggleBitcoinModalVisible}
+                        />
+                        <TradeModalOption
+                            title="Ethereum"
+                            SVG={EthereumLogo}
+                            toggleModal={toggleFundingModalVisible}
+                        />
+                        <TradeModalOption
+                            title="Wire Transfer"
+                            ImageSrc={WireTransferLogo}
+                            last={true}
+                            toggleModal={toggleFundingModalVisible}
+                        />
                     </View>
                 </TouchableWithoutFeedback>
 

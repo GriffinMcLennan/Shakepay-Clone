@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, Modal, Image, Pressable } from 'react-native'
-import ShakepayLogo from './../assets/ShakepayLogo.svg'
-import ShakepayFox from './../assets/fox.png'
+import ShakepayLogo from '../../assets/ShakepayLogo.svg'
+import ShakepayFox from '../../assets/fox.png'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useModalContext } from './../contexts/ModalProvider'
+import { useModalContext } from './../../contexts/ModalProvider'
 import { useNavigation } from '@react-navigation/native'
+import GradientButton from '../GradientButton'
 
 const ShakingModal = () => {
     const { toggleShakingModalVisible } = useModalContext();
@@ -20,37 +21,38 @@ const ShakingModal = () => {
                 <ShakepayLogo width={60} height={60} />
                 <Text style={styles.title}>Too much shakin'</Text>
                 <Text style={styles.subtitle}>Want more sats? Refer a friend!</Text>
-                <Image source={ShakepayFox} style={styles.fox} />
+                <Image
+                    source={ShakepayFox}
+                    style={styles.fox}
+                />
                 <Text style={[styles.title, { marginTop: 10 }]}>#ShakingSats</Text>
 
                 <View style={styles.box}>
                     <View style={styles.streakCount}>
                         <View style={styles.row}>
-                            <FontAwesomeIcon icon={faFireAlt} color={"orange"} size={20} />
+                            <FontAwesomeIcon
+                                icon={faFireAlt}
+                                color={"orange"}
+                                size={20}
+                            />
                             <Text style={styles.boxHeader}>$ day streak!</Text>
                         </View>
                         <Text style={[styles.subtitle, { marginTop: 5 }]}>See you tomorrow!</Text>
                     </View>
                 </View>
 
-                <Pressable
-                    style={{ width: "100%", alignItems: "center" }}
+                <GradientButton
+                    text="Earn $10 by referring a friend"
                     onPress={() => {
                         navigation.navigate("Buy & sell", { from: "Bitcoin" });
                         toggleShakingModalVisible();
                     }}
-                >
-                    <LinearGradient
-                        colors={['#009fff', '#00c8ff']}
-                        style={styles.refBox}
-                        start={[0.5, 1]}
-                        end={[1, 1]}
-                    >
-                        <Text style={styles.refText}>Earn $10 by referring a friend</Text>
-                    </LinearGradient>
-                </Pressable>
+                />
 
-                <Pressable style={styles.closeBox} onPress={() => toggleShakingModalVisible()}>
+                <Pressable
+                    style={styles.closeBox}
+                    onPress={() => toggleShakingModalVisible()}
+                >
                     <Text style={styles.closeBoxText}>Close</Text>
                 </Pressable>
             </View>

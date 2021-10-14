@@ -5,16 +5,14 @@ import NumPad from './../components/NumPad'
 import EthereumLogo from './../assets/eth.svg'
 import BitcoinLogo from './../assets/btc.svg'
 import CadLogo from './../assets/mapleLeaf.svg'
-import { LinearGradient } from 'expo-linear-gradient'
 import { basicPrices } from './../services/priceService'
 import { useModalContext } from './../contexts/ModalProvider'
 import SwapButton from './../components/SwapButton'
 import ConversionInfo from '../components/ConversionInfo.js'
-import { handleTransaction } from './../services/handleTransaction'
 import { useUserContext } from './../contexts/UserProvider'
 import { useIsFocused } from "@react-navigation/native";
 import { db } from './../firebase'
-
+import GradientButton from '../components/GradientButton'
 
 const RED = "#f1326b";
 const ORANGE = "#f79218";
@@ -236,28 +234,20 @@ const BuyScreen = ({ route }) => {
                         value={convertedValue}
                         available={currencyToInfo[toCurrency].available}
                     />
+
                     <NumPad
                         numberPressed={numberPressed}
                         undoNumberPressed={undoNumberPressed}
                         decimalPressed={decimalPressed}
                     />
 
-                    <Pressable
-                        style={{ width: "100%", alignItems: "center" }}
+                    <GradientButton
+                        text={`${buySell} ${crypto}`}
                         onPress={() => {
                             toggleTransactionModalVisible();
-                            // handleTransaction(fromCurrency, toCurrency, number, uid, convertedValue);
                         }}
-                    >
-                        <LinearGradient
-                            colors={['#009fff', '#00c8ff']}
-                            style={[styles.refBox, disableButton && { opacity: 0.3 }]}
-                            start={[0.5, 1]}
-                            end={[1, 1]}
-                        >
-                            <Text style={styles.refText}>{buySell} {crypto}</Text>
-                        </LinearGradient>
-                    </Pressable>
+                        disableButton={disableButton}
+                    />
                 </View>
             }
         </View>

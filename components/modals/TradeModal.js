@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import TradeModalOption from './TradeModalOption'
 import { Dimensions } from 'react-native'
 import { faExchangeAlt, faHistory, faTags } from '@fortawesome/free-solid-svg-icons'
-import { useModalContext } from './../contexts/ModalProvider'
+import { useModalContext } from './../../contexts/ModalProvider'
 
 
 const windowWidth = Dimensions.get('window').width;
@@ -65,8 +65,6 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: windowWidth,
         height: windowHeight + 200,
-        //other potential colour scheme
-        // backgroundColor: 'rgba(22, 43, 74, 0.8)', 
         backgroundColor: 'rgba(19, 43, 80, 0.7)',
         alignItems: "center",
     },

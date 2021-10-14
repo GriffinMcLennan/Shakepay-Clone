@@ -1,12 +1,27 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable, TouchableWithoutFeedback } from 'react-native'
 import { Dimensions } from 'react-native'
-import { useModalContext } from '../contexts/ModalProvider'
+import { useModalContext } from './../../contexts/ModalProvider'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const DOLLAR_OPTION = [{ name: "Ethereum", id: "Ethereum", last: 1 }, { name: "Bitcoin", id: "Bitcoin" }];
-const CRYPTO_OPTION = [{ name: "Canadian Dollars", id: "Dollars" }];
+const DOLLAR_OPTION = [
+    {
+        name: "Ethereum",
+        id: "Ethereum",
+        last: 1
+    },
+    {
+        name: "Bitcoin",
+        id: "Bitcoin"
+    }
+];
+const CRYPTO_OPTION = [
+    {
+        name: "Canadian Dollars",
+        id: "Dollars"
+    }
+];
 
 const ToModal = () => {
     const { toggleToModalVisible, setToCurrency, fromCurrency } = useModalContext();
@@ -19,8 +34,14 @@ const ToModal = () => {
     return (
         <TouchableWithoutFeedback onPress={toggleToModalVisible} >
             <View style={styles.dominant}>
-                <Pressable style={[styles.modal, styles.closeModal]} onPress={() => toggleToModalVisible()}>
-                    <Text style={{ fontWeight: "bold", fontSize: 20, color: "#1e86f6" }}>Cancel</Text>
+                <Pressable
+                    style={[
+                        styles.modal,
+                        styles.closeModal
+                    ]}
+                    onPress={() => toggleToModalVisible()}
+                >
+                    <Text style={styles.cancelText}>Cancel</Text>
                 </Pressable>
 
                 <View style={styles.flexReverse}>
@@ -33,7 +54,10 @@ const ToModal = () => {
                                     switchCurrencies(tuple.id);
                                     toggleToModalVisible();
                                 }}
-                                style={[styles.option, !tuple.last && styles.borderBottom]}>
+                                style={[
+                                    styles.option,
+                                    !tuple.last && styles.borderBottom
+                                ]}>
                                 <Text style={styles.text}>{tuple.name}</Text>
                             </Pressable>
                         ))
@@ -91,5 +115,10 @@ const styles = StyleSheet.create({
     borderBottom: {
         borderBottomWidth: 1,
         borderBottomColor: "#e0e0e0",
-    }
+    },
+    cancelText: {
+        fontWeight: "bold",
+        fontSize: 20,
+        color: "#1e86f6"
+    },
 })

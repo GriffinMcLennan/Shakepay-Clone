@@ -10,7 +10,6 @@ const Currency = ({ name, amount, Logo, price }) => {
     useEffect(() => {
         if (name === 'Dollars') {
             amount = amount.toLocaleString('en-US', { currency: 'USD' });
-            console.log(amount);
         }
     }, [amount]);
 

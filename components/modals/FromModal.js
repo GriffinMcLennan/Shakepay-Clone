@@ -1,11 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable, TouchableWithoutFeedback } from 'react-native'
 import { Dimensions } from 'react-native'
-import { useModalContext } from '../contexts/ModalProvider'
+import { useModalContext } from './../../contexts/ModalProvider'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const OPTIONS = [{ name: "Ethereum", id: "Ethereum", last: 1 }, { name: "Bitcoin", id: "Bitcoin" }, { name: "Canadian Dollars", id: "Dollars" }];
+const OPTIONS = [
+    { name: "Ethereum", id: "Ethereum", last: 1 },
+    { name: "Bitcoin", id: "Bitcoin" },
+    { name: "Canadian Dollars", id: "Dollars" }
+];
 
 const FromModal = () => {
     const { toggleFromModalVisible, setFromCurrency, setToCurrency } = useModalContext();
@@ -24,8 +28,11 @@ const FromModal = () => {
     return (
         <TouchableWithoutFeedback onPress={toggleFromModalVisible} >
             <View style={styles.dominant}>
-                <Pressable style={[styles.modal, styles.closeModal]} onPress={() => toggleFromModalVisible()} >
-                    <Text style={{ fontWeight: "bold", fontSize: 20, color: "#1e86f6" }}>Cancel</Text>
+                <Pressable
+                    style={[styles.modal, styles.closeModal]}
+                    onPress={() => toggleFromModalVisible()}
+                >
+                    <Text style={styles.closeText}>Cancel</Text>
                 </Pressable>
 
                 <View style={styles.flexReverse}>
@@ -37,7 +44,8 @@ const FromModal = () => {
                                     switchCurrencies(tuple.id);
                                     toggleFromModalVisible();
                                 }}
-                                style={[styles.option, !tuple.last && styles.borderBottom]}>
+                                style={[styles.option, !tuple.last && styles.borderBottom]}
+                            >
                                 <Text style={styles.text}>{tuple.name}</Text>
                             </Pressable>
                         ))
@@ -95,5 +103,10 @@ const styles = StyleSheet.create({
     borderBottom: {
         borderBottomWidth: 1,
         borderBottomColor: "#e0e0e0",
-    }
+    },
+    closeText: {
+        fontWeight: "bold",
+        fontSize: 20,
+        color: "#1e86f6"
+    },
 })

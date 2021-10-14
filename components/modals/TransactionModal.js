@@ -1,15 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback, Pressable } from 'react-native'
 import { Dimensions } from 'react-native'
-import BitcoinLogo from './../assets/btc.svg'
-import EthereumLogo from './../assets/eth.svg'
-import DollarLogo from './../assets/mapleLeaf.svg'
+import BitcoinLogo from '../../assets/btc.svg'
+import EthereumLogo from '../../assets/eth.svg'
+import DollarLogo from '../../assets/mapleLeaf.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { useModalContext } from '../contexts/ModalProvider'
-import { useUserContext } from './../contexts/UserProvider'
-import GradientButton from './GradientButton'
-import { handleTransaction } from './../services/handleTransaction'
+import { useModalContext } from '../../contexts/ModalProvider'
+import { useUserContext } from '../../contexts/UserProvider'
+import GradientButton from '../GradientButton'
+import { handleTransaction } from '../../services/handleTransaction'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -50,13 +50,19 @@ const TransactionModal = () => {
                             style={styles.exit}
                             onPress={() => toggleTransactionModalVisible()}
                         >
-                            <FontAwesomeIcon icon={faTimes} size={18} />
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                size={18}
+                            />
                         </Pressable>
                     </View>
 
                     <View style={styles.currency}>
                         <View style={styles.currencyRow}>
-                            <FromLogo height={40} width={40} />
+                            <FromLogo
+                                height={40}
+                                width={40}
+                            />
                             <View style={styles.info}>
                                 <Text style={styles.infoText}>From</Text>
                                 <Text style={styles.infoAmount}>{fromCurrencyAmount}</Text>

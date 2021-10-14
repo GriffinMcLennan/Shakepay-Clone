@@ -12,7 +12,10 @@ const SendScreen = () => {
 
                 <View style={styles.box}>
                     <View style={styles.boxRow}>
-                        <TextInput style={styles.boxText}>Send to @shaketag</TextInput>
+                        <TextInput
+                            placeholder="Send to @shaketag"
+                            style={styles.boxText}
+                        />
                     </View>
                 </View>
 
@@ -68,6 +71,8 @@ const styles = StyleSheet.create({
         fontWeight: "400",
         marginLeft: 5,
         fontSize: 16,
+        width: "100%",
+        height: "100%",
     },
     contacts: {
         fontSize: 12,

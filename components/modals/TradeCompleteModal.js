@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable, Modal, Image } from 'react-native'
-import InteracLogo from './../assets/interac_logo.png'
-import { useModalContext } from './../contexts/ModalProvider'
+import InteracLogo from '../../assets/interac_logo.png'
+import { useModalContext } from '../../contexts/ModalProvider'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import BitcoinLogo from './../assets/btc.svg'
-import EthereumLogo from './../assets/eth.svg'
-import DollarLogo from './../assets/mapleLeaf.svg'
+import BitcoinLogo from '../../assets/btc.svg'
+import EthereumLogo from '../../assets/eth.svg'
+import DollarLogo from '../../assets/mapleLeaf.svg'
 
 const currencyToLogo = {
     Dollars: DollarLogo,
@@ -35,14 +35,21 @@ const TradeCompleteModal = () => {
                 <View style={styles.container}>
                     <Pressable
                         onPress={() => toggleTradeCompleteModalVisible()}
-                        style={{ flexDirection: "row", height: 30, width: "100%", justifyContent: "flex-end", alignItems: "center", marginRight: 10, paddingTop: 20 }}
+                        style={styles.row}
                     >
-                        <View style={{ width: 50, height: 50, alignItems: "center", }}>
-                            <FontAwesomeIcon icon={faTimes} size={22} />
+                        <View style={styles.cross}>
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                size={22}
+                            />
                         </View>
                     </Pressable>
 
-                    <Logo width={100} height={100} marginTop={170} />
+                    <Logo
+                        width={100}
+                        height={100}
+                        marginTop={170}
+                    />
 
                     <Text style={styles.currencyType}>Just {buyOrSell} {toName}</Text>
                     <Text style={styles.currencyAmount}>{prefix}{toCurrencyAmount}</Text>
@@ -72,5 +79,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "500",
         marginTop: 10,
-    }
+    },
+    row: {
+        flexDirection: "row",
+        height: 30,
+        width: "100%",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        marginRight: 10,
+        paddingTop: 20
+    },
+    cross: {
+        width: 50,
+        height: 50,
+        alignItems: "center",
+    },
 })
