@@ -23,17 +23,29 @@ const SettingsScreen = ({ navigation }) => {
                     }
 
                     <View style={styles.row}>
-                        <FontAwesomeIcon icon={faCheckSquare} size={20} color={BLUE} />
+                        <FontAwesomeIcon
+                            icon={faCheckSquare}
+                            size={20}
+                            color={BLUE}
+                        />
                         <Text style={styles.infoText}>Account verified</Text>
                     </View>
 
                     <View style={styles.row}>
-                        <FontAwesomeIcon icon={faCheckSquare} size={20} color={BLUE} />
+                        <FontAwesomeIcon
+                            icon={faCheckSquare}
+                            size={20}
+                            color={BLUE}
+                        />
                         {email && <Text style={styles.infoText}>{email}</Text>}
                     </View>
 
                     <View style={styles.row}>
-                        <FontAwesomeIcon icon={faCheckSquare} size={20} color={BLUE} />
+                        <FontAwesomeIcon
+                            icon={faCheckSquare}
+                            size={20}
+                            color={BLUE}
+                        />
                         <Text style={styles.infoText}>(204)781-1986</Text>
                     </View>
 
@@ -56,7 +68,10 @@ const SettingsScreen = ({ navigation }) => {
                 <SettingOption title="Blog" />
                 <SettingOption title="Legal" />
                 <SettingOption title="App version" />
-                <SettingOption title="Log out" onPress={() => logout()} />
+                <SettingOption
+                    title="Log out"
+                    onPress={() => logout()}
+                />
 
 
             </ScrollView>

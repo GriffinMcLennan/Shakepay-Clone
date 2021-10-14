@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 
 const SettingOption = ({ title, onPress }) => {
     return (
-        <Pressable style={styles.container} onPress={() => onPress && onPress()}>
+        <Pressable
+            style={styles.container}
+            onPress={() => onPress && onPress()}
+        >
             <Text style={styles.text}>{title}</Text>
         </Pressable>
     )

@@ -9,8 +9,15 @@ const SettingsStack = createStackNavigator();
 const SettingsStackScreen = () => {
     return (
         <SettingsStack.Navigator>
-            <SettingsStack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
-            <SettingsStack.Screen name="Help" component={HelpScreen} />
+            <SettingsStack.Screen
+                name="Settings"
+                component={SettingsScreen}
+                options={{ headerShown: false }}
+            />
+            <SettingsStack.Screen
+                name="Help"
+                component={HelpScreen}
+            />
         </SettingsStack.Navigator>
     )
 }

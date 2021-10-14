@@ -8,8 +8,14 @@ const HeaderLeft = () => {
     const navigation = useNavigation();
 
     return (
-        <Pressable style={styles.container} onPress={() => navigation.pop()}>
-            <FontAwesomeIcon icon={faChevronLeft} size={20} />
+        <Pressable
+            style={styles.container}
+            onPress={() => navigation.pop()}
+        >
+            <FontAwesomeIcon
+                icon={faChevronLeft}
+                size={20}
+            />
         </Pressable>
     )
 }

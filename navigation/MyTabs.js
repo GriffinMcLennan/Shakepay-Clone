@@ -44,15 +44,24 @@ const MyTabs = () => {
                         <TradeButton />
                     )
                         : (
-                            <FontAwesomeIcon icon={icon} size={20} color={iconColor} />
+                            <FontAwesomeIcon
+                                icon={icon}
+                                size={20}
+                                color={iconColor}
+                            />
                         )
                 },
                 headerShown: false,
                 tabBarShowLabel: false,
             })}
         >
-            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="Card"
+            <Tab.Screen
+                name="HomeStack"
+                component={HomeStackScreen}
+            />
+
+            <Tab.Screen
+                name="Card"
                 component={CardScreen}
                 options={{
                     headerShown: true,
@@ -60,9 +69,18 @@ const MyTabs = () => {
                     headerTitleStyle: { fontWeight: "400", fontSize: 22, }
                 }}
             />
-            <Tab.Screen name="Trade" component={HomeStackScreen} />
-            <Tab.Screen name="Send" component={SendScreen} />
-            <Tab.Screen name="SettingsStack" component={SettingsStackScreen} />
+            <Tab.Screen
+                name="Trade"
+                component={HomeStackScreen}
+            />
+            <Tab.Screen
+                name="Send"
+                component={SendScreen}
+            />
+            <Tab.Screen
+                name="SettingsStack"
+                component={SettingsStackScreen}
+            />
         </Tab.Navigator>
     )
 }

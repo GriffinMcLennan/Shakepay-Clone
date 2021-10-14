@@ -15,7 +15,7 @@ const TradeModalOption = ({ title, description, Icon, last, link, SVG, ImageSrc,
                 setToCurrency("Bitcoin");
                 navigation.navigate(link, { from: "Dollars" });
             }
-            else {
+            else if (toggleNewModal !== undefined) {
                 //Toggle New Modal we're transitioning to
                 toggleNewModal();
             }

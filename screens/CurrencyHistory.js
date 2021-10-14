@@ -54,8 +54,15 @@ const CurrencyHistory = ({ navigation, route }) => {
                 <HeaderLeft />
             ),
             headerRight: () => (
-                <Pressable style={styles.toTrade} onPress={() => setCurrencies()} >
-                    <FontAwesomeIcon icon={faExchangeAlt} size={20} color={"#009FFF"} />
+                <Pressable
+                    style={styles.toTrade}
+                    onPress={() => setCurrencies()}
+                >
+                    <FontAwesomeIcon
+                        icon={faExchangeAlt}
+                        size={20}
+                        color={"#009FFF"}
+                    />
                 </Pressable>
             )
         });
@@ -130,14 +137,30 @@ const CurrencyHistory = ({ navigation, route }) => {
             <ScrollView>
                 {name !== "Dollars" &&
                     <View style={styles.bottomBorder}>
-                        <ChartPathProvider data={{ points: periodToArray[timePeriod][0], smoothingStrategy: "bezier", smoothingFactor: "0.3" }}>
-                            <Chart SIZE={SIZE} changeStartPrice={(newPrice) => changeStartPrice(newPrice)} startPrice={startPrice} currentPrice={currentPrice} />
+                        <ChartPathProvider
+                            data={{
+                                points: periodToArray[timePeriod][0],
+                                smoothingStrategy: "bezier",
+                                smoothingFactor: "0.3"
+                            }}
+                        >
+                            <Chart
+                                SIZE={SIZE}
+                                changeStartPrice={
+                                    (newPrice) => changeStartPrice(newPrice)
+                                }
+                                startPrice={startPrice}
+                                currentPrice={currentPrice}
+                            />
                         </ChartPathProvider>
 
                         <View style={styles.selector}>
                             {
                                 periods.map(period => (
-                                    <TouchableWithoutFeedback key={period} onPress={() => setTimePeriod(period)}>
+                                    <TouchableWithoutFeedback
+                                        key={period}
+                                        onPress={() => setTimePeriod(period)}
+                                    >
                                         <View style={styles.switches}>
                                             <Text style={timePeriod === period && styles.selected}>1{period}</Text>
                                         </View>
@@ -161,18 +184,32 @@ const CurrencyHistory = ({ navigation, route }) => {
                 </View>
 
                 <View style={styles.buttons}>
-                    <Pressable style={styles.button} onPress={() => toggleFundingOverlay()} >
-                        <FontAwesomeIcon icon={faArrowDown} marginRight={10} color={"#42b5fd"} />
+                    <Pressable
+                        style={styles.button}
+                        onPress={() => toggleFundingOverlay()}
+                    >
+                        <FontAwesomeIcon
+                            icon={faArrowDown}
+                            marginRight={10}
+                            color={"#42b5fd"}
+                        />
                         <Text style={styles.text} >Receive</Text>
                     </Pressable>
 
                     <Pressable style={styles.button}>
-                        <FontAwesomeIcon icon={faArrowUp} marginRight={10} color={"#42b5fd"} />
+                        <FontAwesomeIcon
+                            icon={faArrowUp}
+                            marginRight={10}
+                            color={"#42b5fd"}
+                        />
                         <Text style={styles.text}>Send</Text>
                     </Pressable>
                 </View>
 
-                <Transactions transactionsData={transactions} currency={name} />
+                <Transactions
+                    transactionsData={transactions}
+                    currency={name}
+                />
             </ScrollView>
         </View>
 

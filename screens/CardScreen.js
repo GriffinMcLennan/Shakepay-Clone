@@ -15,8 +15,16 @@ const CardScreen = () => {
             {shaketag && <Text style={styles.greeting}>Hi ${shaketag}</Text>}
 
             <View style={styles.info}>
-                <CardInfo number="142,610" description="Waitlist position" />
-                <CardInfo number="800" description="Points earned" color="#009FFF" />
+                <CardInfo
+                    number="142,610"
+                    description="Waitlist position"
+                />
+
+                <CardInfo
+                    number="800"
+                    description="Points earned"
+                    color="#009FFF"
+                />
             </View>
         </View>
     )

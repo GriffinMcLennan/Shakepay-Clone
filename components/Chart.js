@@ -81,20 +81,30 @@ const Chart = ({ currentPrice, SIZE }) => {
         <View>
             <ChartXLabel
                 format={formatDatetime}
-                style={{ backgroundColor: "white", color: "#657795", marginLeft: 10, marginTop: 10, fontSize: 18 }}
+                style={styles.chartX}
             />
 
             <View style={styles.priceData}>
                 <ChartYLabel
                     format={formatPrice}
-                    style={{ backgroundColor: "white", color: "black", marginLeft: 10, marginTop: 5, fontSize: 22 }}
+                    style={styles.chartY}
                 />
 
             </View>
 
-            <View style={{ backgroundColor: "white", marginTop: 0, }}>
-                <ChartPath selectedStrokeWidth="2" selectedOpacity="1" height={SIZE / 2} stroke="#009FFF" strokeWidth="2" width={SIZE} />
-                <ChartDot style={{ backgroundColor: "#009FFF" }} />
+            <View style={styles.background}>
+                <ChartPath
+                    selectedStrokeWidth="2"
+                    selectedOpacity="1"
+                    height={SIZE / 2}
+                    stroke="#009FFF"
+                    strokeWidth="2"
+                    width={SIZE}
+                />
+                <ChartDot
+                    style={styles.chartDot}
+                />
+
             </View>
 
         </View>
@@ -107,5 +117,26 @@ const styles = StyleSheet.create({
     priceData: {
         flexDirection: "row",
         marginBottom: 20,
-    }
+    },
+    chartX: {
+        backgroundColor: "white",
+        color: "#657795",
+        marginLeft: 10,
+        marginTop: 10,
+        fontSize: 18
+    },
+    chartY: {
+        backgroundColor: "white",
+        color: "black",
+        marginLeft: 10,
+        marginTop: 5,
+        fontSize: 22
+    },
+    background: {
+        backgroundColor: "white",
+        marginTop: 0,
+    },
+    chartDot: {
+        backgroundColor: "#009FFF"
+    },
 })

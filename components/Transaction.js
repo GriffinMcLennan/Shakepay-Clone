@@ -35,7 +35,13 @@ const Transaction = ({ type, date, amount, address, currency }) => {
         <View style={styles.container}>
             <View style={styles.transaction}>
                 <View style={styles.row}>
-                    {icon !== "" && <FontAwesomeIcon icon={icon} color={color} marginTop={4} />}
+                    {
+                        icon !== "" && <FontAwesomeIcon
+                            icon={icon}
+                            color={color}
+                            marginTop={4}
+                        />
+                    }
 
                     <View style={styles.transactionInfo}>
                         {message !== '' && <Text style={styles.transactionTitle}>{message}</Text>}
@@ -46,7 +52,7 @@ const Transaction = ({ type, date, amount, address, currency }) => {
 
 
                 <View style={styles.transactionAmount}>
-                    <Text style={{ color: type === 'Receive' || type === "Buy" ? GREEN : "black" }}>{amount}</Text>
+                    <Text style={{ color: (type === 'Receive' || type === "Buy") ? GREEN : "black" }}>{amount}</Text>
                 </View>
             </View>
         </View>

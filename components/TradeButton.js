@@ -8,9 +8,15 @@ const TradeButton = () => {
     const { toggleTradeModalVisible } = useModalContext();
 
     return (
-        <TouchableWithoutFeedback onPress={() => toggleTradeModalVisible()} >
+        <TouchableWithoutFeedback
+            onPress={() => toggleTradeModalVisible()}
+        >
             <View style={styles.container}>
-                <FontAwesomeIcon icon={faExchangeAlt} size={20} color={"white"} />
+                <FontAwesomeIcon
+                    icon={faExchangeAlt}
+                    size={20}
+                    color={"white"}
+                />
             </View>
         </TouchableWithoutFeedback>
     )

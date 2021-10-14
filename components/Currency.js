@@ -23,8 +23,14 @@ const Currency = ({ name, amount, Logo, price }) => {
             currentPrice: price,
         })} >
             <View style={styles.holding}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Logo width={36} height={36} marginRight={10} />
+                <View
+                    style={styles.row}
+                >
+                    <Logo
+                        width={36}
+                        height={36}
+                        marginRight={10}
+                    />
                     <View>
                         <Text style={styles.title}>{name}</Text>
                         {
@@ -33,7 +39,9 @@ const Currency = ({ name, amount, Logo, price }) => {
                     </View>
                 </View>
 
-                <View style={{ alignItems: "flex-end" }}>
+                <View style={{
+                    alignItems: "flex-end"
+                }}>
                     <Text style={styles.title}>{truncate((name === 'Dollars' ? amount.toLocaleString('en-US', { currency: 'USD' }) : amount.toString()))}</Text>
                     {
                         price && (<Text style={styles.priceInfo}>${truncate(value.toLocaleString('en-US', { currency: 'USD' }))}</Text>)
@@ -65,5 +73,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "#657795",
         marginTop: 5,
+    },
+    row: {
+        flexDirection: "row",
+        alignItems: "center"
     }
 })

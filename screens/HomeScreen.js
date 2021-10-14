@@ -56,25 +56,56 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.homescreen}>
-            <ShakepayLogo width={40} height={40} marginTop={10} />
+            <ShakepayLogo
+                width={40}
+                height={40}
+                marginTop={10}
+            />
             <Text style={styles.portfolioValue}>${truncate(total.toLocaleString('en-US', { currency: 'USD' }))}</Text>
 
             <View style={styles.buttons}>
-                <Pressable style={styles.button} onPress={() => toggleFundingModalVisible()} >
-                    <FontAwesomeIcon icon={faArrowDown} marginRight={10} color={"#42b5fd"} />
+                <Pressable
+                    style={styles.button}
+                    onPress={() => toggleFundingModalVisible()}
+                >
+                    <FontAwesomeIcon
+                        icon={faArrowDown}
+                        marginRight={10}
+                        color={"#42b5fd"}
+                    />
                     <Text style={styles.text} >Add funds</Text>
                 </Pressable>
 
                 <Pressable style={styles.button}>
-                    <FontAwesomeIcon icon={faArrowUp} marginRight={10} color={"#42b5fd"} />
+                    <FontAwesomeIcon
+                        icon={faArrowUp}
+                        marginRight={10}
+                        color={"#42b5fd"}
+                    />
                     <Text style={styles.text}>Send</Text>
                 </Pressable>
             </View>
 
             <ScrollView style={styles.holdings}>
-                <Currency name={"Dollars"} amount={dollarAmount} Logo={CadLogo} />
-                <Currency name={"Bitcoin"} amount={bitcoinAmount} Logo={BitcoinLogo} price={bitcoinPrice} />
-                <Currency name={"Ethereum"} amount={ethereumAmount} Logo={EthereumLogo} price={ethereumPrice} />
+                <Currency
+                    name={"Dollars"}
+                    amount={dollarAmount}
+                    Logo={CadLogo}
+                />
+
+                <Currency
+                    name={"Bitcoin"}
+                    amount={bitcoinAmount}
+                    Logo={BitcoinLogo}
+                    price={bitcoinPrice}
+                />
+
+                <Currency
+                    name={"Ethereum"}
+                    amount={ethereumAmount}
+                    Logo={EthereumLogo}
+                    price={ethereumPrice}
+                />
             </ScrollView>
         </View>
     )

@@ -14,17 +14,28 @@ const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available })
     const modalToggle = toFrom === "From" ? toggleFromModalVisible : toggleToModalVisible;
 
     return (
-        <View style={[styles.container, { borderColor: color }]}>
-            <Pressable style={styles.currencyInfo} onPress={() => modalToggle()}>
-                <SVG width={35} height={35} />
+        <View
+            style={[
+                styles.container,
+                { borderColor: color }
+            ]}>
+
+            <Pressable
+                style={styles.currencyInfo}
+                onPress={() => modalToggle()}
+            >
+                <SVG
+                    width={35}
+                    height={35}
+                />
 
                 <View style={styles.currencyInfoText}>
-                    <Text style={{ color: GRAY, marginBottom: 2, fontSize: 14, }}>{toFrom}</Text>
-                    <View style={{ flexDirection: "row", alignItems: "center" }}>
-                        <Text style={{ fontWeight: "400", fontSize: 18, marginRight: 7, }}>{currency}</Text>
+                    <Text style={styles.toFrom}>{toFrom}</Text>
+                    <View style={styles.currencyBox}>
+                        <Text style={styles.currencyText}>{currency}</Text>
                         <FontAwesomeIcon icon={faChevronDown} />
                     </View>
-                    <Text style={{ color: GRAY, fontSize: 14, }}>{truncate(available)}</Text>
+                    <Text style={styles.currencyAvailable}>{truncate(available)}</Text>
                 </View>
             </Pressable>
 
@@ -65,5 +76,23 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: "300",
         marginRight: 25,
+    },
+    toFrom: {
+        color: GRAY,
+        marginBottom: 2,
+        fontSize: 14,
+    },
+    currencyBox: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    currencyText: {
+        fontWeight: "400",
+        fontSize: 18,
+        marginRight: 7
+    },
+    currencyAvailable: {
+        color: GRAY,
+        fontSize: 14,
     }
 })

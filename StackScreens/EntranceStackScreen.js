@@ -14,9 +14,19 @@ const EntranceStackScreen = () => {
         <SafeAreaView style={styles.container}>
             <NavigationContainer>
                 <EntranceStack.Navigator>
-                    <EntranceStack.Screen name="Entrance" component={EntranceScreen} options={{ headerShown: false }} />
-                    <EntranceStack.Screen name="Sign In" component={SignInScreen} />
-                    <EntranceStack.Screen name="Register" component={RegisterScreen} />
+                    <EntranceStack.Screen
+                        name="Entrance"
+                        component={EntranceScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <EntranceStack.Screen
+                        name="Sign In"
+                        component={SignInScreen}
+                    />
+                    <EntranceStack.Screen
+                        name="Register"
+                        component={RegisterScreen}
+                    />
                 </EntranceStack.Navigator>
             </NavigationContainer>
             <StatusBar style="auto" />
