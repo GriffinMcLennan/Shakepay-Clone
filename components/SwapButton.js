@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import COLORS from '../constants/theme'
 
 const SwapButton = ({ swap }) => {
     return (
@@ -28,6 +29,6 @@ const styles = StyleSheet.create({
         width: 100,
         height: "100%",
         borderRightWidth: 1,
-        borderColor: "#f0f5ff",
+        borderColor: COLORS.mildGray,
     },
 })

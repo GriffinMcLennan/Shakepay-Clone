@@ -5,7 +5,7 @@ import { faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 import ReferralInfo from './../components/ReferralInfo'
 import SettingOption from './../components/SettingOption'
 import { useUserContext } from './../contexts/UserProvider'
-const BLUE = "#109bfe";
+import COLORS from '../constants/theme'
 
 const SettingsScreen = ({ navigation }) => {
     const { logout, shaketag, email } = useUserContext();
@@ -13,7 +13,6 @@ const SettingsScreen = ({ navigation }) => {
     return (
         <View style={styles.container} >
             <Text style={styles.header}>Settings</Text>
-
             <ScrollView>
                 <View style={styles.leftBuffer}>
                     {shaketag &&
@@ -26,7 +25,7 @@ const SettingsScreen = ({ navigation }) => {
                         <FontAwesomeIcon
                             icon={faCheckSquare}
                             size={20}
-                            color={BLUE}
+                            color={COLORS.lightBlue}
                         />
                         <Text style={styles.infoText}>Account verified</Text>
                     </View>
@@ -35,7 +34,7 @@ const SettingsScreen = ({ navigation }) => {
                         <FontAwesomeIcon
                             icon={faCheckSquare}
                             size={20}
-                            color={BLUE}
+                            color={COLORS.lightBlue}
                         />
                         {email && <Text style={styles.infoText}>{email}</Text>}
                     </View>
@@ -44,7 +43,7 @@ const SettingsScreen = ({ navigation }) => {
                         <FontAwesomeIcon
                             icon={faCheckSquare}
                             size={20}
-                            color={BLUE}
+                            color={COLORS.lightBlue}
                         />
                         <Text style={styles.infoText}>(204)781-1986</Text>
                     </View>
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
         fontWeight: "400",
     },
     interacCode: {
-        color: "#139ff6",
+        color: COLORS.lightBlue,
         fontWeight: "600",
     },
     referrals: {

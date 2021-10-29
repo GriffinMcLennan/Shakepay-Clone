@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCopy, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../../contexts/ModalProvider'
 import { useUserContext } from './../../contexts/UserProvider'
+import COLORS from '../../constants/theme'
 
 const InteracModal = () => {
     const { toggleInteracModalVisible } = useModalContext();
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 35,
         borderRadius: 5,
         padding: 5,
@@ -117,11 +118,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     boxText: {
-        color: "#059fff",
+        color: COLORS.lightBlue,
         fontWeight: "600",
     },
     disclaimer: {
-        color: "#455d87",
+        color: COLORS.lightGray,
         fontSize: 14,
         marginTop: 15,
     },

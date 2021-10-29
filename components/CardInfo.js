@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import COLORS from '../constants/theme'
 
 const CardInfo = ({ number, description, color }) => {
     return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     descriptionStyle: {
-        color: "#6A6A6A",
+        color: COLORS.lightGray,
         fontSize: 16,
     }
 })

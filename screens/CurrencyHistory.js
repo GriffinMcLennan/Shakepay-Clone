@@ -12,8 +12,8 @@ import { useUserContext } from './../contexts/UserProvider'
 import { db } from './../firebase'
 import { useIsFocused } from "@react-navigation/native";
 import { truncate } from './../services/truncate'
+import COLORS from '../constants/theme'
 
-const link = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=bidaily";
 const { width: SIZE } = Dimensions.get("window");
 const HOUR = "H";
 const DAY = "D";
@@ -61,7 +61,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                     <FontAwesomeIcon
                         icon={faExchangeAlt}
                         size={20}
-                        color={"#009FFF"}
+                        color={COLORS.lightBlue}
                     />
                 </Pressable>
             )
@@ -191,7 +191,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                         <FontAwesomeIcon
                             icon={faArrowDown}
                             marginRight={10}
-                            color={"#42b5fd"}
+                            color={COLORS.paleBlue}
                         />
                         <Text style={styles.text} >Receive</Text>
                     </Pressable>
@@ -200,7 +200,7 @@ const CurrencyHistory = ({ navigation, route }) => {
                         <FontAwesomeIcon
                             icon={faArrowUp}
                             marginRight={10}
-                            color={"#42b5fd"}
+                            color={COLORS.paleBlue}
                         />
                         <Text style={styles.text}>Send</Text>
                     </Pressable>
@@ -263,12 +263,12 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10,
         borderBottomWidth: 1,
-        borderBottomColor: "#f0f5ff",
+        borderBottomColor: COLORS.mildGray,
         height: 65,
     },
     button: {
         width: "45%",
-        backgroundColor: "#f0f5ff",
+        backgroundColor: COLORS.mildGray,
         alignItems: "center",
         justifyContent: "center",
         height: 45,
@@ -276,13 +276,13 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     text: {
-        color: "#42b5fd",
+        color: COLORS.paleBlue,
         fontWeight: "700",
         fontSize: 16,
     },
     bottomBorder: {
         borderBottomWidth: 1,
-        borderBottomColor: "#f0f5ff",
+        borderBottomColor: COLORS.mildGray,
     },
     toTrade: {
         height: 50,

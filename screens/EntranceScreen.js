@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import ShakepayLogo from './../assets/ShakepayLogo.svg'
 import GradientButton from './../components/GradientButton'
+import COLORS from '../constants/theme'
 
 const EntranceScreen = ({ navigation }) => {
     return (
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         paddingRight: 30,
     },
     highlight: {
-        color: "#009FFF",
+        color: COLORS.lightBlue,
         fontWeight: "bold",
     },
     outlineButton: {
@@ -63,13 +64,13 @@ const styles = StyleSheet.create({
         width: "90%",
         height: 50,
         borderRadius: 5,
-        borderColor: "#009fff",
+        borderColor: COLORS.lightBlue,
         borderWidth: 2,
         alignItems: "center",
         justifyContent: "center",
     },
     outlineText: {
-        color: "#009fff",
+        color: COLORS.lightBlue,
         fontWeight: "600",
         fontSize: 16,
     }

@@ -4,6 +4,7 @@ import { CheckBox } from 'react-native-elements'
 import HeaderLeft from './../components/HeaderLeft'
 import GradientButton from './../components/GradientButton'
 import { useUserContext } from './../contexts/UserProvider'
+import COLORS from '../constants/theme'
 
 const RegisterScreen = ({ navigation }) => {
     const [shaketag, setShaketag] = useState("");
@@ -47,7 +48,7 @@ const RegisterScreen = ({ navigation }) => {
                                     onChangeText={(text) => setShaketag(text)}
                                     value={shaketag}
                                     placeholder="@shaketag (like a username)"
-                                    placeholderTextColor="#6581b3"
+                                    placeholderTextColor={COLORS.placeholderGray}
                                     autoFocus
                                 />
                             </View>
@@ -60,7 +61,7 @@ const RegisterScreen = ({ navigation }) => {
                                     onChangeText={(text) => setEmail(text)}
                                     value={email}
                                     placeholder="Email"
-                                    placeholderTextColor="#6581b3"
+                                    placeholderTextColor={COLORS.placeholderGray}
                                     autofocus
                                 />
                             </View>
@@ -73,7 +74,7 @@ const RegisterScreen = ({ navigation }) => {
                                     onChangeText={(text) => setPassword(text)}
                                     value={password}
                                     placeholder="Password"
-                                    placeholderTextColor="#6581b3"
+                                    placeholderTextColor={COLORS.placeholderGray}
                                     autofocus
                                     secureTextEntry
                                 />
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 50,
         borderRadius: 5,
         padding: 5,
@@ -152,14 +153,14 @@ const styles = StyleSheet.create({
     },
     description: {
         marginTop: 10,
-        color: "#6581b3",
+        color: COLORS.placeholderGray,
         marginBottom: 15,
     },
     tos: {
         fontSize: 12,
     },
     tosHighlight: {
-        color: "#009FFF",
+        color: COLORS.lightBlue,
         fontWeight: "bold",
     }
 })

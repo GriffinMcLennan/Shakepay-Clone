@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { faExchangeAlt, faUpload, faDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import COLORS from '../constants/theme'
 
 const GREEN = "#37c197";
 const BLUE = "#009FFF";
@@ -91,12 +92,12 @@ const styles = StyleSheet.create({
     },
     transactionAddress: {
         fontSize: 12,
-        color: "#657795",
+        color: COLORS.lightGray,
         marginBottom: 3,
     },
     transactionDate: {
         fontSize: 12,
-        color: "#657795",
+        color: COLORS.lightGray,
         fontWeight: "500",
         marginBottom: 6,
     }

@@ -4,7 +4,7 @@ import TradeModalOption from './TradeModalOption'
 import { Dimensions } from 'react-native'
 import { faExchangeAlt, faHistory, faTags } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../../contexts/ModalProvider'
-
+import COLORS from '../../constants/theme'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: windowWidth,
         height: windowHeight + 200,
-        backgroundColor: 'rgba(19, 43, 80, 0.7)',
+        backgroundColor: COLORS.modalShadowBlue,
         alignItems: "center",
     },
     modal: {

@@ -1,3 +1,15 @@
-export const COLORS = {
-    
+export default COLORS = {
+    lightGray: "#657795",
+    mildGray: "#f0f7ff",
+    darkGray: "#f0f0f0",
+    placeholderGray: "#6581b3",
+    paleBlue: "#42b5fd",
+    lightBlue: "#059fff",
+    blue: "#1e86f6",
+    red: "#f1326b",
+    orange: "#f79218",
+    black: "black",
+    modalShadowGray: "rgba(0, 0, 0, 0.23)",
+    modalShadowBlue: "rgba(19, 43, 80, 0.7)",
+    borderColor: "#e0e0e0",
 };

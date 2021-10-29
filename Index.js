@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState, useContext } from 'react'
-import { StyleSheet, Text, View, KeyboardAvoidingView, SafeAreaView } from 'react-native'
+import React from 'react'
+import { StyleSheet, View, SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 import TradeModal from './components/modals/TradeModal'

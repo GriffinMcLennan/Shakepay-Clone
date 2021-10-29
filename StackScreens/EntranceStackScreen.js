@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import EntranceScreen from './../screens/EntranceScreen'
 import SignInScreen from './../screens/SignInScreen'
 import RegisterScreen from './../screens/RegisterScreen'
+import COLORS from '../constants/theme'
 
 const EntranceStack = createStackNavigator();
 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         paddingRight: 30,
     },
     highlight: {
-        color: "#009FFF",
+        color: COLORS.lightBlue,
         fontWeight: "bold",
     },
 })

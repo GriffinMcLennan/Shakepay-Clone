@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, TextInput, View, Text, KeyboardAvoidingView, ScrollView } from 'react-native'
 import Contact from './../components/Contact'
+import COLORS from '../constants/theme'
 
 const FRIENDS = ["Alice", "Bob", "Craig", "Dan", "Eli", "Francis", "Henry", "Janis", "Kyle", "Lyle", "Morris"];
 
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 50,
         borderRadius: 5,
         padding: 5,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     boxText: {
-        color: "#6581b3",
+        color: COLORS.placeholderGray,
         fontWeight: "400",
         marginLeft: 5,
         fontSize: 16,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft: 45,
         marginBottom: 6,
-        color: "#6581b3",
+        color: COLORS.placeholderGray,
         fontWeight: "600",
     },
 })

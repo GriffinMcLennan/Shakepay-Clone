@@ -7,6 +7,7 @@ import EthereumLogo from '../../assets/eth.svg'
 import InteracLogo from '../../assets/interac_logo.jpg'
 import WireTransferLogo from '../../assets/wire.png'
 import { useModalContext } from '../../contexts/ModalProvider'
+import COLORS from '../../constants/theme'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -53,7 +54,7 @@ const FundingModal = () => {
 
                 <TouchableWithoutFeedback onPress={toggleFundingModalVisible}>
                     <View style={[styles.modal, styles.closeModal]}>
-                        <Text>Cancel</Text>
+                        <Text style={styles.closeText}>Cancel</Text>
                     </View>
                 </TouchableWithoutFeedback>
 
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: windowWidth,
         height: windowHeight + 200,
-        backgroundColor: 'rgba(19, 43, 80, 0.7)',
+        backgroundColor: COLORS.modalShadowBlue,
         alignItems: "center",
     },
     modal: {
@@ -91,9 +92,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     text: {
-        color: "#657795",
+        color: COLORS.lightGray,
         paddingTop: 20,
         paddingLeft: 20,
         fontSize: 16,
+    },
+    closeText: {
+        fontSize: 16,
+        fontWeight: "500",
     }
 })

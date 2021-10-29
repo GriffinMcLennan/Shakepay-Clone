@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput, KeyboardAvoidingView } f
 import HeaderLeft from './../components/HeaderLeft'
 import GradientButton from './../components/GradientButton'
 import { useUserContext } from './../contexts/UserProvider'
+import COLORS from '../constants/theme'
 
 const SignInScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 50,
         borderRadius: 5,
         padding: 5,

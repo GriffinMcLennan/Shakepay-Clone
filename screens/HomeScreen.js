@@ -13,6 +13,7 @@ import { useUserContext } from './../contexts/UserProvider'
 import { db } from './../firebase'
 import { useIsFocused } from "@react-navigation/native";
 import { truncate } from './../services/truncate'
+import COLORS from '../constants/theme'
 
 const HomeScreen = () => {
     const [bitcoinPrice, setBitcoinPrice] = useState("0");
@@ -71,7 +72,7 @@ const HomeScreen = () => {
                     <FontAwesomeIcon
                         icon={faArrowDown}
                         marginRight={10}
-                        color={"#42b5fd"}
+                        color={COLORS.paleBlue}
                     />
                     <Text style={styles.text} >Add funds</Text>
                 </Pressable>
@@ -80,7 +81,7 @@ const HomeScreen = () => {
                     <FontAwesomeIcon
                         icon={faArrowUp}
                         marginRight={10}
-                        color={"#42b5fd"}
+                        color={COLORS.paleBlue}
                     />
                     <Text style={styles.text}>Send</Text>
                 </Pressable>
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: "45%",
-        backgroundColor: "#f0f5ff",
+        backgroundColor: COLORS.mildGray,
         alignItems: "center",
         justifyContent: "center",
         height: 45,
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     holdings: {
         width: "100%",
         borderTopWidth: 1,
-        borderColor: "#f0f5ff",
+        borderColor: COLORS.mildGray,
     },
     holding: {
         flexDirection: "row",
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     text: {
-        color: "#42b5fd",
+        color: COLORS.paleBlue,
         fontWeight: "700",
         fontSize: 16,
     }

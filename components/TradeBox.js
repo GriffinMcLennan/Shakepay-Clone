@@ -5,8 +5,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../contexts/ModalProvider'
 import { formatNumber } from '../services/formatNumber';
 import { truncate } from './../services/truncate'
-
-const GRAY = "#455d87";
+import COLORS from '../constants/theme'
 
 const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available }) => {
     const amount = value !== undefined ? value : formatNumber(amountArr.join(""));
@@ -40,7 +39,6 @@ const TradeBox = ({ currency, color, SVG, toFrom, amountArr, value, available })
             </Pressable>
 
             <Text style={styles.amount}>{amount}</Text>
-            {/* </View> */}
         </View>
     )
 }
@@ -53,8 +51,8 @@ const styles = StyleSheet.create({
         borderLeftWidth: 5,
         borderTopWidth: 1,
         borderBottomWidth: 1,
-        borderTopColor: "#f0f5ff",
-        borderBottomColor: "#f0f5ff",
+        borderTopColor: COLORS.mildGray,
+        borderBottomColor: COLORS.mildGray,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
@@ -78,7 +76,7 @@ const styles = StyleSheet.create({
         marginRight: 25,
     },
     toFrom: {
-        color: GRAY,
+        color: COLORS.lightGray,
         marginBottom: 2,
         fontSize: 14,
     },
@@ -92,7 +90,7 @@ const styles = StyleSheet.create({
         marginRight: 7
     },
     currencyAvailable: {
-        color: GRAY,
+        color: COLORS.lightGray,
         fontSize: 14,
     }
 })

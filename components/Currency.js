@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { truncate } from './../services/truncate'
+import COLORS from '../constants/theme'
 
 const Currency = ({ name, amount, Logo, price }) => {
     const navigation = useNavigation();
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     },
     priceInfo: {
         fontSize: 16,
-        color: "#657795",
+        color: COLORS.lightGray,
         marginTop: 5,
     },
     row: {

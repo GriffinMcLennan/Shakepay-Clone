@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useNavigation } from '@react-navigation/native'
 import { useModalContext } from '../../contexts/ModalProvider'
+import COLORS from '../../constants/theme'
 
 const ICON_SIZE = 24;
 
@@ -64,7 +65,7 @@ export default TradeModalOption
 const styles = StyleSheet.create({
     bottom: {
         borderBottomWidth: 1,
-        borderColor: "gainsboro",
+        borderColor: COLORS.borderColor,
     },
     container: {
         flexDirection: "row",

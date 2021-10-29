@@ -5,6 +5,7 @@ import { faCopy, faTimes } from '@fortawesome/free-solid-svg-icons'
 import BitcoinLogo from './../../assets/btc.svg'
 import QRCode from 'react-native-qrcode-svg';
 import { useModalContext } from '../../contexts/ModalProvider'
+import COLORS from '../../constants/theme'
 
 const BitcoinModal = () => {
     const { toggleBitcoinModalVisible } = useModalContext();
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         marginBottom: 45,
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 35,
         borderRadius: 5,
         padding: 5,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     boxText: {
-        color: "#059fff",
+        color: COLORS.lightBlue,
         fontWeight: "600",
     },
 })

@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable, TouchableWithoutFeedback } from 'react-native'
 import { Dimensions } from 'react-native'
 import { useModalContext } from './../../contexts/ModalProvider'
+import COLORS from '../../constants/theme'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -65,13 +66,13 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: windowWidth,
         height: windowHeight + 200,
-        backgroundColor: 'rgba(0, 0, 0, 0.23)',
+        backgroundColor: COLORS.modalShadowGray,
         alignItems: "center",
     },
     modal: {
         position: "absolute",
         width: "95%",
-        backgroundColor: "#f0f0f0",
+        backgroundColor: COLORS.darkGray,
         borderRadius: 15,
     },
     closeModal: {
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: 150,
         flexDirection: "column-reverse",
-        backgroundColor: "#f0f0f0",
+        backgroundColor: COLORS.darkGray,
         borderRadius: 15,
         width: "95%",
         alignItems: "center",
@@ -96,17 +97,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     text: {
-        color: "#1e86f6",
+        color: COLORS.blue,
         fontSize: 18,
         fontWeight: "500",
     },
     borderBottom: {
         borderBottomWidth: 1,
-        borderBottomColor: "#e0e0e0",
+        borderBottomColor: COLORS.borderColor,
     },
     closeText: {
         fontWeight: "bold",
         fontSize: 20,
-        color: "#1e86f6"
+        color: COLORS.blue,
     },
 })

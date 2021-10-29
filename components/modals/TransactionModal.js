@@ -10,6 +10,7 @@ import { useModalContext } from '../../contexts/ModalProvider'
 import { useUserContext } from '../../contexts/UserProvider'
 import GradientButton from '../GradientButton'
 import { handleTransaction } from '../../services/handleTransaction'
+import COLORS from '../../constants/theme'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: windowWidth,
         height: windowHeight + 200,
-        backgroundColor: 'rgba(19, 43, 80, 0.7)',
+        backgroundColor: COLORS.modalShadowBlue,
         alignItems: "center",
     },
     modal: {
@@ -115,14 +116,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 5,
         borderBottomWidth: 1,
-        borderBottomColor: "#e0e0e0",
+        borderBottomColor: COLORS.borderColor,
     },
     currency: {
         paddingLeft: 10,
         paddingTop: 30,
         paddingBottom: 30,
         borderBottomWidth: 1,
-        borderBottomColor: "#e0e0e0",
+        borderBottomColor: COLORS.borderColor,
     },
     currencyRow: {
         flexDirection: "row",
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     },
     infoText: {
         fontSize: 16,
-        color: "#657795",
+        color: COLORS.lightGray,
     },
     infoAmount: {
         marginTop: 3,

@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import COLORS from '../constants/theme'
 
 const ConversionInfo = ({ from, to, bitcoinPrice, ethereumPrice }) => {
     const buySell = to === "Bitcoin" || to === "Ethereum" ? "Buy" : "Sell";
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         borderRightWidth: 1,
-        borderColor: "#f0f5ff",
+        borderColor: COLORS.mildGray,
 
     }
 })

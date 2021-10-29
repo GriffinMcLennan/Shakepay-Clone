@@ -4,10 +4,10 @@ import ShakepayLogo from '../../assets/ShakepayLogo.svg'
 import ShakepayFox from '../../assets/fox.png'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
-import { LinearGradient } from 'expo-linear-gradient'
 import { useModalContext } from './../../contexts/ModalProvider'
 import { useNavigation } from '@react-navigation/native'
 import GradientButton from '../GradientButton'
+import COLORS from '../../constants/theme'
 
 const ShakingModal = () => {
     const { toggleShakingModalVisible } = useModalContext();
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     subtitle: {
         marginTop: 10,
         fontSize: 16,
-        color: "#455d87",
+        color: COLORS.lightGray,
     },
     fox: {
         marginTop: 50,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         height: 200,
     },
     box: {
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         height: 80,
         marginTop: 65,
         justifyContent: "center",
@@ -132,11 +132,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderWidth: 2,
         borderRadius: 5,
-        borderColor: "#009fff",
+        borderColor: COLORS.lightBlue,
         marginTop: 20,
     },
     closeBoxText: {
-        color: "#009fff",
+        color: COLORS.lightBlue,
         fontSize: 16,
         fontWeight: "600",
     }

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import ShakeVisa from './../assets/ShakeVisa.jpg'
 import CardInfo from './../components/CardInfo'
 import { useUserContext } from './../contexts/UserProvider'
+import COLORS from '../constants/theme'
 
 const CardScreen = () => {
     const { shaketag } = useUserContext();
@@ -41,11 +42,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 34,
         marginTop: 30,
-        color: "#009FFF",
+        color: COLORS.lightBlue,
         fontWeight: "700",
     },
     subtitle: {
-        color: "#657795",
+        color: COLORS.lightGray,
         fontSize: 16,
         marginTop: 10,
     },

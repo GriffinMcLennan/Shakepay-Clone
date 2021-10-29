@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import COLORS from '../constants/theme'
 
 const ReferralInfo = () => {
     return (
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     descriptionText: {
-        color: "#6b80b3",
+        color: COLORS.lightGray,
         marginTop: 15,
         marginBottom: 15,
     }

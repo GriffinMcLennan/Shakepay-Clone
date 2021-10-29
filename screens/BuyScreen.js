@@ -13,10 +13,7 @@ import { useUserContext } from './../contexts/UserProvider'
 import { useIsFocused } from "@react-navigation/native";
 import { db } from './../firebase'
 import GradientButton from '../components/GradientButton'
-
-const RED = "#f1326b";
-const ORANGE = "#f79218";
-const BLACK = "black";
+import COLORS from '../constants/theme'
 
 const BuyScreen = ({ route }) => {
     const { from } = route.params;
@@ -62,20 +59,20 @@ const BuyScreen = ({ route }) => {
     const currencyToInfo = {
         Dollars: {
             available: availableCAD,
-            color: RED,
+            color: COLORS.red,
             logo: CadLogo,
             selectable: ["Bitcoin", "Ethereum"]
         },
         Bitcoin: {
             available: availableBTC,
-            color: ORANGE,
+            color: COLORS.orange,
             logo: BitcoinLogo,
             selectable: ["Dollars"],
             price: bitcoinPrice,
         },
         Ethereum: {
             available: availableETH,
-            color: BLACK,
+            color: COLORS.black,
             logo: EthereumLogo,
             selectable: ["Dollars"],
             price: ethereumPrice,
@@ -267,7 +264,7 @@ const styles = StyleSheet.create({
     },
     maxText: {
         fontSize: 22,
-        color: "#42b5fd",
+        color: COLORS.paleBlue,
     },
     refText: {
         color: "white",

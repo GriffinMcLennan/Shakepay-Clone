@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../contexts/ModalProvider'
+import COLORS from '../constants/theme'
 
 const TradeButton = () => {
     const { toggleTradeModalVisible } = useModalContext();
@@ -26,7 +27,7 @@ export default TradeButton
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#009FFF",
+        backgroundColor: COLORS.lightBlue,
         borderRadius: 50,
         position: "relative",
         bottom: 10,

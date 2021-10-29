@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import COLORS from '../constants/theme'
 
 const Contact = ({ name }) => {
     const INITIAL = name.charAt(0);
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 63,
         borderBottomWidth: 1,
-        borderBottomColor: "#f0f5ff",
+        borderBottomColor: COLORS.mildGray,
         justifyContent: "center",
     },
     row: {
@@ -36,12 +37,12 @@ const styles = StyleSheet.create({
         height: 35,
         width: 35,
         borderRadius: 50,
-        backgroundColor: "#f0f7ff",
+        backgroundColor: COLORS.mildGray,
         justifyContent: "center",
         alignItems: "center",
     },
     circleText: {
-        color: "#42b5fd",
+        color: COLORS.lightBlue,
         fontSize: 18,
         fontWeight: "bold",
     },

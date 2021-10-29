@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { ChartDot, ChartPath, ChartYLabel, ChartXLabel, useChartData } from '@rainbow-me/animated-charts'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { ChartDot, ChartPath, ChartYLabel, ChartXLabel } from '@rainbow-me/animated-charts'
+import COLORS from '../constants/theme'
 
 const formatDatetime = value => {
     'worklet';
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     },
     chartX: {
         backgroundColor: "white",
-        color: "#657795",
+        color: COLORS.lightGray,
         marginLeft: 10,
         marginTop: 10,
         fontSize: 18
@@ -137,6 +138,6 @@ const styles = StyleSheet.create({
         marginTop: 0,
     },
     chartDot: {
-        backgroundColor: "#009FFF"
+        backgroundColor: COLORS.lightBlue,
     },
 })
