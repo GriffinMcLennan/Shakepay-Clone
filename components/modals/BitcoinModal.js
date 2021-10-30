@@ -40,14 +40,14 @@ const BitcoinModal = () => {
                 </Text>
 
                 <QRCode
-                    value="Place Bitcoin Address Here"
+                    value="141Ey9kBuCwXmJKXR8MgvcVwGjjpUHw4Nu"
                     size={200}
                 />
 
                 <View style={styles.box}>
                     <View style={styles.boxRow}>
-                        <Text style={[styles.boxText, { fontSize: 16 }]}>32NGDF32N</Text>
-                        <FontAwesomeIcon icon={faCopy} color={"#059fff"} />
+                        <Text style={[styles.boxText, { fontSize: 12 }]}>141Ey9kBuCwXmJKXR8MgvcVwGjjpUHw4Nu</Text>
+                        <FontAwesomeIcon icon={faCopy} color={COLORS.lightBlue} />
                     </View>
                 </View>
             </View>
