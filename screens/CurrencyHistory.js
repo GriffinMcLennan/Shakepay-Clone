@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     selected: {
-        color: "blue",
+        color: COLORS.blue,
     },
     balanceRow: {
         flexDirection: "row",

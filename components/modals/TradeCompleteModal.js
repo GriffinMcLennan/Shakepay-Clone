@@ -23,7 +23,7 @@ const TradeCompleteModal = () => {
     } = useModalContext();
 
     const Logo = currencyToLogo[toCurrency];
-    const toName = toCurrency === 'Dollars' ? "CAD" : toCurrency;
+    const toName = toCurrency === 'Dollars' ? fromCurrency : toCurrency;
     const prefix = toCurrency === 'Dollars' ? "$" : "";
     const buyOrSell = fromCurrency === 'Dollars' ? "bought" : "sold";
 

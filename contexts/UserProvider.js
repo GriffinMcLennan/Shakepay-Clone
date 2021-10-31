@@ -1,7 +1,4 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
-// import { auth } from './../firebase'
-// import { onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
-// import { auth } from './../firebase'
 import { auth, db } from './../firebase'
 
 const UserContext = createContext();
@@ -24,12 +21,14 @@ const UserProvider = ({ children }) => {
                 shaketag: shaketag,
                 email: email,
                 password: password,
-                Dollars: "3000",
-                Bitcoin: "0.5",
+                Dollars: "100000",
+                Bitcoin: "1",
                 Ethereum: "32",
                 DollarTransactions: [],
                 BitcoinTransactions: [],
                 EthereumTransactions: [],
+                shakedToday: false,
+                streak: 0,
             });
         } catch (e) {
             console.log(e);

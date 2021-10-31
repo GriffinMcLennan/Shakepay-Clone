@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, View, SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack'
 import TradeModal from './components/modals/TradeModal'
-import FundingModal from './components/modals/FundingModal';
+import FundingModal from './components/modals/FundingModal'
 import MyTabs from './navigation/MyTabs'
 import BuyScreen from './screens/BuyScreen'
 import RecurringBuysScreen from './screens/RecurringBuysScreen'
@@ -21,7 +21,8 @@ import EntranceScreen from './screens/EntranceScreen'
 import SignInScreen from './screens/SignInScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import TransactionModal from './components/modals/TransactionModal'
-import TradeCompleteModal from './components/modals/TradeCompleteModal';
+import TradeCompleteModal from './components/modals/TradeCompleteModal'
+import * as Shake from 'expo-shake';
 
 const Stack = createStackNavigator();
 
@@ -36,9 +37,20 @@ export default function Index() {
         bitcoinModalVisible,
         transactionModalVisible,
         tradeCompleteModalVisible,
+        setShakingModalVisible,
     } = useModalContext();
 
     const { user } = useUserContext();
+
+    useEffect(() => {
+        Shake.addListener(() => {
+            setShakingModalVisible(true);
+        });
+
+        return () => {
+            Shake.removeSubscription(() => { });
+        }
+    }, []);
 
     return (
         <SafeAreaView style={styles.container}>

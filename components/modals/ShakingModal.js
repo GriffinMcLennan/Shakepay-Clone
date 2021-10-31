@@ -1,17 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Modal, Image, Pressable } from 'react-native'
 import ShakepayLogo from '../../assets/ShakepayLogo.svg'
 import ShakepayFox from '../../assets/fox.png'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons'
 import { useModalContext } from './../../contexts/ModalProvider'
-import { useNavigation } from '@react-navigation/native'
+import { useUserContext } from '../../contexts/UserProvider'
 import GradientButton from '../GradientButton'
 import COLORS from '../../constants/theme'
+import { db } from '../../firebase'
 
 const ShakingModal = () => {
     const { toggleShakingModalVisible } = useModalContext();
-    const navigation = useNavigation();
+    const { uid } = useUserContext();
+    const [shaked, setShaked] = useState(false);
+    const [streak, setStreak] = useState(0);
+
+    const title = shaked ? "You earned bitcoin!" : "Too much shakin'";
+    const subtitle = shaked ? `+ ${5 * streak} satoshis` : "Want more sats? Refer a friend!";
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let userDocRef = db.collection('users').doc(uid);
+            let userDoc = await userDocRef.get();
+            const data = userDoc.data();
+
+
+            if (!data.shakedToday) {
+                setShaked(true);
+                setStreak(data.streak + 1);
+                userDocRef.set({
+                    streak: data.streak + 1,
+                    shakedToday: true,
+                }, { merge: true });
+            }
+            else {
+                setStreak(data.streak);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <Modal
@@ -19,8 +48,8 @@ const ShakingModal = () => {
         >
             <View style={styles.container}>
                 <ShakepayLogo width={60} height={60} />
-                <Text style={styles.title}>Too much shakin'</Text>
-                <Text style={styles.subtitle}>Want more sats? Refer a friend!</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.subtitle}>{subtitle}</Text>
                 <Image
                     source={ShakepayFox}
                     style={styles.fox}
@@ -35,7 +64,7 @@ const ShakingModal = () => {
                                 color={"orange"}
                                 size={20}
                             />
-                            <Text style={styles.boxHeader}>$ day streak!</Text>
+                            <Text style={styles.boxHeader}>{streak} day streak!</Text>
                         </View>
                         <Text style={[styles.subtitle, { marginTop: 5 }]}>See you tomorrow!</Text>
                     </View>
@@ -44,7 +73,6 @@ const ShakingModal = () => {
                 <GradientButton
                     text="Earn $10 by referring a friend"
                     onPress={() => {
-                        navigation.navigate("Buy & sell", { from: "Bitcoin" });
                         toggleShakingModalVisible();
                     }}
                 />

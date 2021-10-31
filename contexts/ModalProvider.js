@@ -65,6 +65,7 @@ const ModalProvider = ({ children }) => {
         interacModalVisible,
         toggleInteracModalVisible,
         shakingModalVisible,
+        setShakingModalVisible,
         toggleShakingModalVisible,
         fromCurrency,
         setFromCurrency,
